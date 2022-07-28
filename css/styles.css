@@ -1,0 +1,122 @@
+* {
+  border: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+:root {
+  font-size: 62.5%; }
+
+/* Estilos Etiquetas globales  */
+h2 {
+  width: 100%;
+  font-family: "Hind Siliguri", sans-serif;
+  font-size: 3.5rem;
+  text-align: center; }
+
+/* Estilos Header  */
+header {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  border: 1px solid blue; }
+
+/* Estilos Main  */
+main {
+  width: 100%; }
+
+.general-section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 350px));
+  grid-template-rows: auto-fill, 400px;
+  place-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+  border: 1px solid purple; }
+
+.general-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #a0a0a0;
+  border-radius: 15px;
+  overflow: hidden; }
+
+/* Estilos Blister Kart*/
+.blister-section .blister-kart {
+  width: 350px;
+  height: 450px; }
+  .blister-section .blister-kart__container-img {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .blister-section .blister-kart__container-img img {
+      width: 300px;
+      height: 300px; }
+  .blister-section .blister-kart__details {
+    max-width: 100%;
+    margin: 15px 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.6rem; }
+    .blister-section .blister-kart__details .character {
+      margin-bottom: 5px; }
+  .blister-section .blister-kart__addCollection {
+    width: 50%;
+    height: 35px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.4rem;
+    border-radius: 5px;
+    background-color: #d8d8d8;
+    cursor: pointer; }
+  .blister-section .blister-kart__addCollection:hover {
+    transform: scale(1.05); }
+  .blister-section .blister-kart__addCollection:active {
+    transform: scale(1); }
+
+.blister-glider-section .blister-glider-kart {
+  width: 350px;
+  height: 450px; }
+  .blister-glider-section .blister-glider-kart__container-img img {
+    width: 275px;
+    height: 300px; }
+
+.packs-section .packs-kart {
+  width: 350px;
+  height: 450px; }
+  .packs-section .packs-kart__container-img img {
+    width: 400px;
+    height: 250px; }
+
+.yoshis-eggs-section .yoshis-eggs-kart {
+  width: 350px;
+  height: 450px; }
+  .yoshis-eggs-section .yoshis-eggs-kart__container-img img {
+    width: 300px;
+    height: 300px; }
+
+.specials-section .specials-kart {
+  width: 350px;
+  height: 450px; }
+  .specials-section .specials-kart__container-img img {
+    width: 300px;
+    height: 400px; }
+
+.tracks-section .tracks-kart {
+  width: 350px;
+  height: 450px; }
+  .tracks-section .tracks-kart__container-img img {
+    width: 400px;
+    height: 350px; }
+
+footer {
+  width: 100%;
+  height: auto;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.8rem;
+  border: 1px solid red; }
+
+footer div {
+  height: 100px; }
