@@ -19,6 +19,7 @@ $color-borders: rgb(160, 160, 160);
 
 h2 {
     width: 100%;
+    margin: 20px 0;
     font-family: $font_headers;
     font-size: 3.5rem;
     text-align: center;
@@ -37,22 +38,19 @@ header {
 
 main {
     width: 100%;
-}
 
+}
 
 .general-section {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill ,minmax(350px, 350px) );
-    grid-template-rows: auto-fill, 400px;
+    grid-template-columns: repeat(auto-fill ,minmax(270px, 270px) );
+    grid-template-rows: auto-fill;
     place-content: center;
     gap: 30px;
     margin-bottom: 30px;
     border: 1px solid purple;
 }
-
-
-
 
 .general-card{
     position: relative;
@@ -72,32 +70,32 @@ main {
 .blister-section {
     
     .blister-kart {
-        width: 350px;
-        height: 450px;
+        width: 270px;
+        height: 380px;
         // border: 1px solid blue;
         &__container-img {
             display: flex;
             justify-content: center;
             align-items: center;
             img {
-                width:300px;
-                height: 300px;
+                width:230px;
+                height: 230px;
             }
         }
         &__details {
-            max-width: 100%;
+            width: 60%;
             margin: 15px 0;
             font-family: $font_main;
-            font-size: 1.6rem;
-            .character {
+            font-size: 1.2rem;
+            .characterBlister {
                 margin-bottom: 5px;
             }
         }
         &__addCollection {
-            width: 50%;
+            width: 60%;
             height: 35px;
             font-family: $font_main;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             border-radius: 5px;
             background-color: $color-background-buttons;
             cursor: pointer;
@@ -115,11 +113,41 @@ main {
 .blister-glider-section {
     
     .blister-glider-kart {
-        width: 350px;
-        height: 450px;
-        &__container-img img {
-            width: 275px;
-            height: 300px;
+        width: 270px;
+        height: 400px;
+        &__container-img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width:230px;
+                height: 230px;
+            }
+        }
+        &__details {
+            // border: 1px solid red;
+            width: 60%;
+            margin: 15px 0;
+            font-family: $font_main;
+            font-size: 1.2rem;
+            .kartBlisterGlider {
+                margin: 5px 0;
+            }
+        }
+        &__addCollection {
+            width: 60%;
+            height: 35px;
+            font-family: $font_main;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            background-color: $color-background-buttons;
+            cursor: pointer;
+        }
+        &__addCollection:hover {
+            transform: scale(1.05);
+        }
+        &__addCollection:active {
+            transform: scale(1);
         }
     }
 }
@@ -128,14 +156,122 @@ main {
 .packs-section {
     
     .packs-kart {
-        width: 350px;
-        height: 450px;
-        &__container-img img {
-            width: 400px;
-            height: 250px;
+        width: 270px;
+        height: 350px;
+        &__container-img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width:240px;
+                height: 170px;
+            }
+        }
+        &__details {
+            // border: 1px solid red;
+            width: 80%;
+            margin: 0 0 15px 0;
+            font-family: $font_main;
+            font-size: 1.2rem;
+            
+        }
+        &__addCollection {
+            width: 60%;
+            height: 35px;
+            font-family: $font_main;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            background-color: $color-background-buttons;
+            cursor: pointer;
+        }
+        &__addCollection:hover {
+            transform: scale(1.05);
+        }
+        &__addCollection:active {
+            transform: scale(1);
         }
     }
 }
+
+.glidersPacks-section {
+    
+    .glidersPacks-kart {
+        width: 270px;
+        height: 370px;
+        &__container-img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width:270px;
+                height: 190px;
+            }
+        }
+        &__details {
+            width: 75%;
+            margin: 10px 0 15px 0;
+            font-family: $font_main;
+            font-size: 1.2rem;
+            
+        }
+        &__addCollection {
+            width: 60%;
+            height: 35px;
+            font-family: $font_main;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            background-color: $color-background-buttons;
+            cursor: pointer;
+        }
+        &__addCollection:hover {
+            transform: scale(1.05);
+        }
+        &__addCollection:active {
+            transform: scale(1);
+        }
+    }
+}
+
+.mixPack-section {
+    
+    .mixPack-kart {
+        width: 270px;
+        height: 430px;
+        &__container-img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width:250px;
+                height: 170px;
+            }
+        }
+        &__details {
+            width: 100%;
+            margin: 10px 0 15px 0;
+            padding: 0 20px;
+            font-family: $font_main;
+            font-size: 1.2rem;
+            
+        }
+        &__addCollection {
+            width: 60%;
+            height: 35px;
+            font-family: $font_main;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            background-color: $color-background-buttons;
+            cursor: pointer;
+        }
+        &__addCollection:hover {
+            transform: scale(1.05);
+        }
+        &__addCollection:active {
+            transform: scale(1);
+        }
+    }
+}
+
 
 
 .yoshis-eggs-section {
