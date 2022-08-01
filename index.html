@@ -16,98 +16,123 @@
             <img src="/assets/logos-marioKart/logo-marioKart-360px.png" alt="">
         </picture>
     </header>
-    <nav>
-        <picture>
-            <!-- menu hamburguesa -->
-        </picture>
+    <nav class="nav">
+        <figure id="menuButton" class="menu-button hamburguerMenu"> 
+
+        </figure>
+        
     </nav>
+    <div id="menu" class="containerlistMenu inactive">
+        <ul class="listMenu">
+            <li class="itemListMenu"><a href="" target="_self">Mi Colección</a></li>
+            <li class="itemListMenu"><a href="" target="_self">Colección General</a></li>
+            <li class="itemListMenu"><a href="" target="_self">Colección Cajas Sorpresa</a></li>
+            <li class="itemListMenu"><a href="" target="_self">Oleadas</a></li>
+            <li class="itemListMenu"><a href="" target="_self">Últimos Lanzamientos</a></li>
+            <li class="itemListMenu"><a href="" target="_self">MK Hot Wheels para principiantes</a></li>
+        </ul>
+    </div>
     <main>
 
-        <h2>Blister Individual</h2>
-        <section id="individualBlisterSection" class="blister-section general-section">
-            <!-- Contenido viene desde JavaScript -->
-        </section>
+        <section class="container-linkCards">
 
+            <section class="section-card">
 
-        <h2>Blister Planeador Individual </h2>
-
-        <section id="individualBlisterGliderSection" class="blister-glider-section general-section">
-            <!-- Contenido viene de JavaScript  -->
-        </section>
-
-        <h2>Paquete de 4</h2>
-        <section id="packsSection" class="packs-section general-section">
-            <!-- Contenido viene de JavaScript  -->
-        </section>
-
-        <h2>Planeadores en Paquete</h2>
-        <section id="glidersPacksSection" class="glidersPacks-section general-section">
-            <!-- Contenido viene de JavaScript  -->
-        </section>
-
-        <h2>Paquete Mixto</h2>
-        <section id="mixPackSection" class="mixPack-section general-section">
-
-            <!-- <div class="mixPack-kart general-card">
-                <figure class="mixPack-kart__container-img">
-                    <img src="/assets/packsVariety/8-pack.png">
+                <h2>Blister Individual</h2>
+    
+                <figure class="section-card__imgContainer blisterIndividual">
+                    <img src="assets/blister/mario-circuit.png" alt="">
                 </figure>
-                <div class="mixPack-kart__details">
-                    <p class="characterKartGliderMixPack"><b>Personajes, karts, planeadores</b>: </p>
-                    <p class="kartMixPack">Mario, Standard Kart, Parafoil,</p>
-                    <p class="kartMixPack">Red Yoshi, P-Wing, Super Glider,</p>
-                    <p class="kartMixPack">Bowser, Standard Kart, Bowser Kite,</p>
-                    <p class="kartMixPack">Waluigi en Badwagon,</p>
-                    <p class="kartMixPack">Toad en Sneeker,</p>
-                    <p class="kartMixPack">Peach en Standard Kart,</p>
-                    <p class="kartMixPack">Shy Guy en B-Dasher,</p>
-                    <p class="kartMixPack">Luigi en Circuit Special</p>
-                    
-                </div>
-                <button class="mixPack-kart__addCollection">Agregar a Colección</button>
-            </div> -->
-            
-        </section>
+    
+                <button type="button" class="section-card__button"><a href="section/individual-blisters.html">Ver Karts</a></button>
+    
+            </section>
 
-        <!-- <h2>Yoshi´s Eggs</h2>
-        <section class="yoshis-eggs-section general-section-styles">
-            <article class="yoshis-eggs-kart general-card-styles">
-                <figure class="yoshis-eggs-kart__container-img">
-                    <img src="/assets/yoshis/whiteYoshi.png" alt="Foto Mario Bros Standard Kart Glider">
-                </figure>
-                <section class="card-kart__details">
-                    <p><b>Personaje</b>: White Yoshi</p>
-                    <p><b>Vehículo</b>: Standard Kart</p>
-                </section>
-            </article>
-        </section>
+            <section class="section-card">
 
-        <h2>Specials</h2>
-        <section class="specials-section general-section-styles">
-            <article class="specials-kart general-card-styles">
-                <figure class="specials-kart__container-img">
-                    <img src="/assets/silver.jpg" alt="Foto Mario Bros Standard Kart Glider">
+                <h2>Planeador Individual</h2>
+    
+                <figure class="section-card__imgContainer blisterGlider">
+                    <img src="assets/glider/mario-pipeFrame.png" alt="">
                 </figure>
-                <section class="card-kart__details">
-                    <p><b>Personaje</b>: Silver Mario</p>
-                    <p><b>Vehículo</b>: Standard Kart</p>
-                    <p><b>Glider</b>: Super Glider</p>
-                </section>
-            </article>
-        </section>
+    
+                <button type="button" class="section-card__button"><a href="section/individual-blisters-glider.html">Ver Karts</a></button>
+    
+            </section>
 
-        <h2>Tracks</h2>
-        <section class="tracks-section general-section-styles">
-            <article class="tracks-kart general-card-styles">
-                <figure class="tracks-kart__container-img">
-                    <img src="/assets/pista.jpg" alt="Foto Mario Bros Standard Kart Glider">
+            <section class="section-card">
+
+                <h2>Paquetes de 4</h2>
+    
+                <figure class="section-card__imgContainer packs">
+                    <img src="assets/packs/mario-bowser-luigi-blackYoshi.png" alt="">
                 </figure>
-                <section class="card-kart__details">
-                    <p><b>Pista</b>: Bowser´s Castle</p>
-                    <p><b>Personaje</b>: Blue Yoshi</p>
-                </section>
-            </article>
-        </section> -->
+    
+                <button type="button" class="section-card__button"><a href="section/packs.html">Ver Paquetes</a></button>
+    
+            </section>
+
+            <section class="section-card">
+
+                <h2>Planeadores en Paquete</h2>
+    
+                <figure class="section-card__imgContainer packsGlider">
+                    <img src="assets/packsVariety/yoshi-waluigi-mario.png" alt="">
+                </figure>
+    
+                <button type="button" class="section-card__button"><a href="section/packs-glider.html">Ver Paquetes</a></button>
+    
+            </section>
+
+            <section class="section-card">
+
+                <h2>Paquete Mixto</h2>
+    
+                <figure class="section-card__imgContainer mixPack">
+                    <img src="assets/packsVariety/8-pack.png" alt="">
+                </figure>
+    
+                <button type="button" class="section-card__button"><a href="section/pack-mix.html">Ver Paquete</a></button>
+    
+            </section>
+
+            <section class="section-card">
+
+                <h2>Huevos de Yoshi</h2>
+    
+                <figure class="section-card__imgContainer eggs">
+                    <img src="assets/yoshis/blackYoshi.png" alt="">
+                </figure>
+    
+                <button type="button" class="section-card__button"><a href="section/yoshi-eggs.html">Ver Karts</a></button>
+    
+            </section>
+
+            <section class="section-card">
+
+                <h2>Especiales</h2>
+    
+                <figure class="section-card__imgContainer specials">
+                    <img src="assets/specials/silver-mario.png" alt="">
+                </figure>
+    
+                <button type="button" class="section-card__button"><a href="section/specials.html">Ver Karts</a></button>
+    
+            </section>
+
+            <section class="section-card">
+
+                <h2>Pistas</h2>
+    
+                <figure class="section-card__imgContainer tracks">
+                    <img src="assets/tracks/mario-circuit-lite.png" alt="">
+                </figure>
+    
+                <button type="button" class="section-card__button"><a href="section/tracks.html">Ver Pistas</a></button>
+    
+            </section>
+
+        </section>
 
     </main>
 

@@ -1,18 +1,20 @@
 * {
-  border: 0;
+  padding: 0;
   margin: 0;
+  border: none;
   box-sizing: border-box; }
 
 :root {
   font-size: 62.5%; }
 
 /* Estilos Etiquetas globales  */
-h2 {
-  width: 100%;
-  margin: 20px 0;
+h1 {
+  width: 80%;
+  margin: 0 auto 10px auto;
   font-family: "Hind Siliguri", sans-serif;
-  font-size: 3.5rem;
-  text-align: center; }
+  font-size: 2.5rem;
+  text-align: center;
+  line-height: 2.8rem; }
 
 /* Estilos Header  */
 header {
@@ -20,11 +22,116 @@ header {
   height: 90px;
   display: flex;
   align-items: center;
-  border: 1px solid blue; }
+  justify-content: center; }
+
+.nav {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; }
+  .nav .menu-button {
+    width: 35px;
+    height: 35px;
+    position: absolute; }
+
+.inactive {
+  display: none; }
+
+.hamburguerMenu {
+  background: url(/assets/icons/menu.png);
+  background-size: 100% 100%; }
+
+.xMenu {
+  background: url(/assets/icons/close.png);
+  background-size: 100% 100%; }
+
+.containerlistMenu {
+  width: 70%;
+  max-width: 310px;
+  margin: 10px auto 30px auto;
+  background: white; }
+  .containerlistMenu .listMenu {
+    width: 100%;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.4rem;
+    list-style: none; }
+    .containerlistMenu .listMenu .itemListMenu {
+      margin: 10px 0; }
+      .containerlistMenu .listMenu .itemListMenu a {
+        text-decoration: none;
+        color: black; }
 
 /* Estilos Main  */
 main {
-  width: 100%; }
+  width: 100%;
+  position: relative; }
+
+.container-linkCards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 300px));
+  grid-template-rows: repeat(8, minmax(380px, auto));
+  place-content: center;
+  gap: 30px;
+  margin-bottom: 30px; }
+  .container-linkCards .section-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #a0a0a0;
+    border-radius: 15px;
+    overflow: hidden; }
+    .container-linkCards .section-card h2 {
+      position: absolute;
+      top: 30px;
+      width: 80%;
+      margin: 0 auto 10px auto;
+      font-family: "Hind Siliguri", sans-serif;
+      font-size: 2.5rem;
+      text-align: center;
+      line-height: 2.8rem; }
+    .container-linkCards .section-card__imgContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 15px; }
+    .container-linkCards .section-card__button {
+      position: absolute;
+      bottom: 30px;
+      width: 60%;
+      height: 35px;
+      border-radius: 5px;
+      background-color: #d8d8d8;
+      cursor: pointer; }
+      .container-linkCards .section-card__button a {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.4rem;
+        color: black;
+        text-decoration: none; }
+    .container-linkCards .section-card__button:hover {
+      transform: scale(1.05); }
+    .container-linkCards .section-card__button:active {
+      transform: scale(1); }
+
+.blisterIndividual img, .blisterGlider img, .eggs img, .specials img {
+  width: 230px;
+  height: 230px; }
+
+.packs img {
+  width: 280px;
+  height: 180px; }
+
+.packsGlider img, .tracks img {
+  width: 300px;
+  height: 190px; }
+
+.mixPack img {
+  width: 285px;
+  height: 190px; }
 
 .general-section {
   width: 100%;
@@ -33,8 +140,7 @@ main {
   grid-template-rows: auto-fill;
   place-content: center;
   gap: 30px;
-  margin-bottom: 30px;
-  border: 1px solid purple; }
+  margin-bottom: 30px; }
 
 .general-card {
   position: relative;
@@ -193,25 +299,91 @@ main {
     transform: scale(1); }
 
 .yoshis-eggs-section .yoshis-eggs-kart {
-  width: 350px;
-  height: 450px; }
-  .yoshis-eggs-section .yoshis-eggs-kart__container-img img {
-    width: 300px;
-    height: 300px; }
+  width: 270px;
+  height: 380px; }
+  .yoshis-eggs-section .yoshis-eggs-kart__container-img {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .yoshis-eggs-section .yoshis-eggs-kart__container-img img {
+      width: 230px;
+      height: 230px; }
+  .yoshis-eggs-section .yoshis-eggs-kart__details {
+    width: 80%;
+    margin: 10px 0 15px 0;
+    padding: 0 20px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.2rem; }
+  .yoshis-eggs-section .yoshis-eggs-kart__addCollection {
+    width: 60%;
+    height: 35px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: #d8d8d8;
+    cursor: pointer; }
+  .yoshis-eggs-section .yoshis-eggs-kart__addCollection:hover {
+    transform: scale(1.05); }
+  .yoshis-eggs-section .yoshis-eggs-kart__addCollection:active {
+    transform: scale(1); }
 
 .specials-section .specials-kart {
-  width: 350px;
-  height: 450px; }
-  .specials-section .specials-kart__container-img img {
-    width: 300px;
-    height: 400px; }
+  width: 270px;
+  height: 380px; }
+  .specials-section .specials-kart__container-img {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .specials-section .specials-kart__container-img img {
+      width: 230px;
+      height: 230px; }
+  .specials-section .specials-kart__details {
+    width: 60%;
+    margin: 15px 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.2rem; }
+    .specials-section .specials-kart__details .characterBlister {
+      margin-bottom: 5px; }
+  .specials-section .specials-kart__addCollection {
+    width: 60%;
+    height: 35px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: #d8d8d8;
+    cursor: pointer; }
+  .specials-section .specials-kart__addCollection:hover {
+    transform: scale(1.05); }
+  .specials-section .specials-kart__addCollection:active {
+    transform: scale(1); }
 
 .tracks-section .tracks-kart {
-  width: 350px;
-  height: 450px; }
-  .tracks-section .tracks-kart__container-img img {
-    width: 400px;
-    height: 350px; }
+  width: 270px;
+  height: 350px; }
+  .tracks-section .tracks-kart__container-img {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .tracks-section .tracks-kart__container-img img {
+      width: 260px;
+      height: 180px; }
+  .tracks-section .tracks-kart__details {
+    width: 80%;
+    margin: 5px 0 15px 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.2rem; }
+  .tracks-section .tracks-kart__addCollection {
+    width: 60%;
+    height: 35px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: #d8d8d8;
+    cursor: pointer; }
+  .tracks-section .tracks-kart__addCollection:hover {
+    transform: scale(1.05); }
+  .tracks-section .tracks-kart__addCollection:active {
+    transform: scale(1); }
 
 footer {
   width: 100%;
