@@ -1,10 +1,11 @@
 $font_headers: 'Hind Siliguri', sans-serif;
 $font_main: 'Montserrat', sans-serif;
 
-$color-background-buttons: rgb(216, 216, 216);
-$color-borders: rgb(160, 160, 160);
-$color-background-card-added: rgb(255, 255, 255);
-$color-borders-card-added: rgb(5, 112, 5);
+$color-background-buttons: rgb(44, 44, 44);
+$color-text-buttons: white;
+$color-borders: rgb(0, 0, 0);
+
+$color-borders-card-added: rgb(4, 151, 4);
 
 
 *{
@@ -38,6 +39,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
 }
 
 .nav {
@@ -92,96 +94,97 @@ header {
     }
 }
 
-
-
 /* Estilos Main  */
 
 main {
     width: 100%;
     position: relative;
+    user-select: none;
 }
 
-// Tarjetas vinculos
+// Estilos generales section y cards
 
-.container-linkCards {
+.general-section {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill ,minmax(270px, 300px) );
-    grid-template-rows: repeat(8, minmax(380px, auto));
+    grid-template-columns: repeat(auto-fill ,minmax(270px, 270px) );
+    grid-template-rows: auto-fill;
     place-content: center;
     gap: 30px;
     margin-bottom: 30px;
-    .section-card {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid $color-borders;
-        border-radius: 15px;
-        overflow: hidden;
-        h2 {
-            position: absolute;
-            top: 30px;
-            width: 80%;
-            margin: 0 auto 10px auto;
-            font-family: $font_headers;
-            font-size: 2.5rem;
-            text-align: center;
-            line-height: 2.8rem;
-        }
-        &__imgContainer {
+}
+
+.general-card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.bordersNormal {
+    border: 1px solid $color-borders;
+}
+
+.bordersGreen {
+    border: 1px solid $color-borders-card-added;
+}
+
+/* Estilos Blister Kart*/
+
+.blister-section {
+    
+    .blister-kart {
+        width: 270px;
+        height: 380px;
+        // border: 1px solid blue;
+        &__container-img {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 15px;
-        }
-        &__button {
-            position: absolute;
-            bottom: 30px;
-            width: 60%;
-            height: 35px;
-            border-radius: 5px;
-            background-color: $color-background-buttons;
-            cursor: pointer;
-            a {
-                font-family: $font_main;
-                font-size: 1.4rem;
-                color: black;
-                text-decoration: none;
+            user-select: none;
+            img {
+                width:230px;
+                height: 230px;
             }
         }
-        &__button:hover {
-            transform: scale(1.05);
+        &__details {
+            width: 60%;
+            margin: 15px 0;
+            font-family: $font_main;
+            font-size: 1.2rem;
+            .characterBlister {
+                margin-bottom: 5px;
+            }
         }
-        &__button:active {
-            transform: scale(1);
+        &__addCollection {
+            width: 60%;
+            height: 35px;
+            transition: 100ms ease-in-out;
+            font-family: $font_main;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            color: $color-text-buttons;
+            cursor: pointer;
+        }
+        &__noInCollection {
+            background-color: $color-background-buttons;
+        }
+        &__inCollection {
+            background-color: $color-borders-card-added;
+        }
+        &__addCollection:hover {
+            transform: scale(1.1);
+            transition: 200ms ease-in-out;
+        }
+        &__addCollection:active {
+            // transform: scale(1);
         }
     }
 }
 
-// Imagenes a medida correcta de tarjetas vinculos
-.blisterIndividual img, .blisterGlider img, .eggs img, .specials img {
-    width: 230px;
-    height: 230px;
-}
-
-.packs img {
-    width:280px;
-    height: 180px;
-}
-
-.packsGlider img, .tracks img {
-    width: 300px;
-    height: 190px;
-}
-
-.mixPack img {
-    width: 285px;
-    height: 190px;
-}
-
-
+// Footer 
 
 footer {
     width: 100%;

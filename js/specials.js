@@ -16,12 +16,14 @@ function openCloseMenu(){
 menuButton.addEventListener('click', openCloseMenu);
 
 
-// Section Specials
+// Section Specials agregar contenido
+
+//Variables
 let specialsSection = document.querySelector('#specialsSection')
 let specialsList = [];
 
 
-// Section Specials
+// Array con contenido
 specialsList.push(
     {
         imgKart: '/assets/specials/golden-mario.png',
@@ -44,6 +46,7 @@ specialsList.push(
     
 )
 
+// Funcion que aggrega el contenido al navegador
 function addCardsSpecials(array){
     array.forEach(item => {
         // Creando elementos
@@ -92,7 +95,7 @@ function addCardsSpecials(array){
         //Button Add
 
         let buttonAdd = document.createElement('button');
-        let textButton = document.createTextNode('Agregar a colección')
+        let textButton = document.createTextNode('Agregar a mi colección')
         buttonAdd.setAttribute('type', 'button');
         buttonAdd.append(textButton);
     
@@ -100,18 +103,53 @@ function addCardsSpecials(array){
         // Agregando clases a elementos
         card.classList.add('specials-kart');
         card.classList.add('general-card');
+        card.classList.add('bordersNormal');
         imgContainer.classList.add('specials-kart__container-img');
         details.classList.add('specials-kart__details')
-
         titleCharacter.classList.add('characterSpecial')
         titleKart.classList.add('kartSpecial');
         titleGlider.classList.add('GliderSpecial');
     
         buttonAdd.classList.add('specials-kart__addCollection');
+        buttonAdd.classList.add('specials-kart__noInCollection')
     
         // Agregando nodos a su respectivo padre
-
         card.append(imgContainer, details, buttonAdd);
+
+        //Funcionalidad del boton agregar a coleccion
+        function collection() {
+
+            if(!buttonAdd.classList.contains('specials-kart__inCollection')) {
+                card.classList.remove('bordersNormal')
+                card.classList.add('bordersGreen')
+
+                buttonAdd.classList.remove('specials-kart__noInCollection')
+                buttonAdd.classList.add('specials-kart__inCollection')
+
+                buttonAdd.removeChild(textButton);
+
+                textButton = document.createTextNode('En mi colección')
+                buttonAdd.style.color = 'white';
+                buttonAdd.append(textButton);
+
+                card.style.borderWidth = '3px';
+            } else {
+                card.classList.remove('bordersGreen')
+                card.classList.add('bordersNormal')
+
+                buttonAdd.classList.remove('specials-kart__inCollection')
+                buttonAdd.classList.add('specials-kart__noInCollection')
+                
+                buttonAdd.removeChild(textButton);
+                
+                textButton = document.createTextNode('Agregar a mi colección')
+                buttonAdd.style.color = 'white';
+                buttonAdd.append(textButton);
+                
+                card.style.borderWidth = '1px';
+            }
+        } 
+        buttonAdd.addEventListener('click', collection)
     
         // Agregando a section en HTML
         specialsSection.append(card);

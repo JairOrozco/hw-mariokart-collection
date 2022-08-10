@@ -15,13 +15,14 @@ function openCloseMenu(){
 menuButton.addEventListener('click', openCloseMenu);
 
 
-// Section Yoshi Eggs
+// Section Yoshi Eggs agregando contenido
 
+// Variables
 let yoshiEggsSection = document.querySelector('#yoshiEggsSection')
 let yoshiEggsList = [];
 
 
-// Section Yoshi Eggs
+// Array con contenido
 yoshiEggsList.push(
     {
         imgKart: '/assets/yoshis/whiteYoshi.png',
@@ -65,6 +66,7 @@ yoshiEggsList.push(
     },
 )
 
+// Funcion que agrega contenido a el navegador
 function addCardsYoshiEggs(array) {
     array.forEach(item => {
         // Creando elementos
@@ -104,7 +106,7 @@ function addCardsYoshiEggs(array) {
         //Button Add
 
         let buttonAdd = document.createElement('button');
-        let textButton = document.createTextNode('Agregar a colección')
+        let textButton = document.createTextNode('Agregar a mi colección')
         buttonAdd.setAttribute('type', 'button');
         buttonAdd.append(textButton);
     
@@ -112,15 +114,52 @@ function addCardsYoshiEggs(array) {
         // Agregando clases a elementos
         card.classList.add('yoshis-eggs-kart');
         card.classList.add('general-card');
+        card.classList.add('bordersNormal');
         imgContainer.classList.add('yoshis-eggs-kart__container-img');
         details.classList.add('yoshis-eggs-kart__details')
         titleCharacter.classList.add('characterYoshi')
         titleKart.classList.add('kartYoshi');
     
         buttonAdd.classList.add('yoshis-eggs-kart__addCollection');
+        buttonAdd.classList.add('yoshis-eggs-kart__noInCollection')
     
         // Agregando nodos a su respectivo padre
         card.append(imgContainer, details, buttonAdd);
+
+        //Funcionalidad del boton agregar a coleccion
+        function collection() {
+
+            if(!buttonAdd.classList.contains('yoshis-eggs-kart__inCollection')) {
+                card.classList.remove('bordersNormal')
+                card.classList.add('bordersGreen')
+
+                buttonAdd.classList.remove('yoshis-eggs-kart__noInCollection')
+                buttonAdd.classList.add('yoshis-eggs-kart__inCollection')
+
+                buttonAdd.removeChild(textButton);
+
+                textButton = document.createTextNode('En mi colección')
+                buttonAdd.style.color = 'white';
+                buttonAdd.append(textButton);
+
+                card.style.borderWidth = '3px';
+            } else {
+                card.classList.remove('bordersGreen')
+                card.classList.add('bordersNormal')
+
+                buttonAdd.classList.remove('yoshis-eggs-kart__inCollection')
+                buttonAdd.classList.add('yoshis-eggs-kart__noInCollection')
+                
+                buttonAdd.removeChild(textButton);
+                
+                textButton = document.createTextNode('Agregar a mi colección')
+                buttonAdd.style.color = 'white';
+                buttonAdd.append(textButton);
+                
+                card.style.borderWidth = '1px';
+            }
+        } 
+        buttonAdd.addEventListener('click', collection)
     
         // Agregando a section en HTML
         yoshiEggsSection.append(card);

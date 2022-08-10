@@ -15,14 +15,16 @@ function openCloseMenu(){
 menuButton.addEventListener('click', openCloseMenu);
 
 
-// Section Pistas
+// Section Pistas agregando contenido
+
+//Variables
 let tracksSection = document.querySelector('#tracksSection')
 let tracksList_1 = [];
 let tracksList_2 = [];
 let tracksList_3 = [];
 
 
-// Section Tracks 1
+// Array con contenido
 tracksList_1.push(
     {
         imgTrack: '/assets/tracks/mario-circuit_1.png',
@@ -38,6 +40,7 @@ tracksList_1.push(
     }
 );
 
+//Funcion que agrega contenido al navegador
 function addCardsTracks(array){
     array.forEach(item => {
         // Creando elementos
@@ -97,7 +100,7 @@ function addCardsTracks(array){
         //Button Add
 
         let buttonAdd = document.createElement('button');
-        let textButton = document.createTextNode('Agregar a colección')
+        let textButton = document.createTextNode('Agregar a mi colección')
         buttonAdd.setAttribute('type', 'button');
         buttonAdd.append(textButton);
     
@@ -105,8 +108,8 @@ function addCardsTracks(array){
         // Agregando clases a elementos
         card.classList.add('tracks-kart');
         card.classList.add('general-card');
+        card.classList.add('bordersNormal');
         imgContainer.classList.add('tracks-kart__container-img');
-
         details.classList.add('tracks-kart__details')
         titleTrack.classList.add('track')
         character_1.classList.add('characterTrack');
@@ -115,9 +118,45 @@ function addCardsTracks(array){
         character_4.classList.add('characterTrack');
 
         buttonAdd.classList.add('tracks-kart__addCollection');
+        buttonAdd.classList.add('tracks-kart__noInCollection')
     
         // Agregando nodos a su respectivo padre
         card.append(imgContainer, details, buttonAdd);
+
+        //Funcionalidad del boton agregar a coleccion
+        function collection() {
+
+            if(!buttonAdd.classList.contains('tracks-kart__inCollection')) {
+                card.classList.remove('bordersNormal')
+                card.classList.add('bordersGreen')
+
+                buttonAdd.classList.remove('tracks-kart__noInCollection')
+                buttonAdd.classList.add('tracks-kart__inCollection')
+
+                buttonAdd.removeChild(textButton);
+
+                textButton = document.createTextNode('En mi colección')
+                buttonAdd.style.color = 'white';
+                buttonAdd.append(textButton);
+
+                card.style.borderWidth = '3px';
+            } else {
+                card.classList.remove('bordersGreen')
+                card.classList.add('bordersNormal')
+
+                buttonAdd.classList.remove('tracks-kart__inCollection')
+                buttonAdd.classList.add('tracks-kart__noInCollection')
+                
+                buttonAdd.removeChild(textButton);
+                
+                textButton = document.createTextNode('Agregar a mi colección')
+                buttonAdd.style.color = 'white';
+                buttonAdd.append(textButton);
+                
+                card.style.borderWidth = '1px';
+            }
+        } 
+        buttonAdd.addEventListener('click', collection)
     
         // Agregando a section en HTML
         tracksSection.append(card);
@@ -127,7 +166,7 @@ function addCardsTracks(array){
 addCardsTracks(tracksList_1);
 
 // Section Tracks 2
-
+// Array con contenido
 tracksList_2.push(
     {
         imgTrack: '/assets/tracks/mario-circuit_2.png',
@@ -147,6 +186,7 @@ tracksList_2.push(
     },
 );
 
+//Funcion que agrega contenido al navegador
 function addCardsTracks_2(array){
     array.forEach(item => {
         // Creando elementos
@@ -195,7 +235,7 @@ function addCardsTracks_2(array){
         //Button Add
 
         let buttonAdd = document.createElement('button');
-        let textButton = document.createTextNode('Agregar a colección')
+        let textButton = document.createTextNode('Agregar a mi colección')
         buttonAdd.setAttribute('type', 'button');
         buttonAdd.append(textButton);
     
@@ -203,17 +243,53 @@ function addCardsTracks_2(array){
         // Agregando clases a elementos
         card.classList.add('tracks-kart');
         card.classList.add('general-card');
+        card.classList.add('bordersNormal');
         imgContainer.classList.add('tracks-kart__container-img');
-
         details.classList.add('tracks-kart__details')
         titleTrack.classList.add('track')
         character_1.classList.add('characterTrack');
         character_2.classList.add('characterTrack');
 
         buttonAdd.classList.add('tracks-kart__addCollection');
-    
+        buttonAdd.classList.add('tracks-kart__noInCollection')
+
         // Agregando nodos a su respectivo padre
         card.append(imgContainer, details, buttonAdd);
+
+        //Funcionalidad del boton agregar a coleccion
+        function collection() {
+
+            if(!buttonAdd.classList.contains('tracks-kart__inCollection')) {
+                card.classList.remove('bordersNormal')
+                card.classList.add('bordersGreen')
+
+                buttonAdd.classList.remove('tracks-kart__noInCollection')
+                buttonAdd.classList.add('tracks-kart__inCollection')
+
+                buttonAdd.removeChild(textButton);
+
+                textButton = document.createTextNode('En mi colección')
+                buttonAdd.style.color = 'white';
+                buttonAdd.append(textButton);
+
+                card.style.borderWidth = '3px';
+            } else {
+                card.classList.remove('bordersGreen')
+                card.classList.add('bordersNormal')
+
+                buttonAdd.classList.remove('tracks-kart__inCollection')
+                buttonAdd.classList.add('tracks-kart__noInCollection')
+                
+                buttonAdd.removeChild(textButton);
+                
+                textButton = document.createTextNode('Agregar a mi colección')
+                buttonAdd.style.color = 'white';
+                buttonAdd.append(textButton);
+                
+                card.style.borderWidth = '1px';
+            }
+        } 
+        buttonAdd.addEventListener('click', collection)
     
         // Agregando a section en HTML
         tracksSection.append(card);
@@ -223,7 +299,7 @@ function addCardsTracks_2(array){
 addCardsTracks_2(tracksList_2);
 
 // Section Tracks 3
-
+// Array con contenido
 tracksList_3.push(
     {
         imgTrack: '/assets/tracks/mario-circuit-lite.png',
@@ -269,6 +345,7 @@ tracksList_3.push(
     },
 );
 
+//Funcion que agrega contenido al navegador
 function addCardsTracks_3(array){
     array.forEach(item => {
          // Creando elementos
@@ -319,7 +396,7 @@ function addCardsTracks_3(array){
         //Button Add
 
         let buttonAdd = document.createElement('button');
-        let textButton = document.createTextNode('Agregar a colección')
+        let textButton = document.createTextNode('Agregar a mi colección')
         buttonAdd.setAttribute('type', 'button');
         buttonAdd.append(textButton);
     
@@ -327,18 +404,53 @@ function addCardsTracks_3(array){
         // Agregando clases a elementos
         card.classList.add('tracks-kart');
         card.classList.add('general-card');
+        card.classList.add('bordersNormal');
         imgContainer.classList.add('tracks-kart__container-img');
         details.classList.add('tracks-kart__details')
-
         titleTrack.classList.add('track')
         titleCharacter.classList.add('characterTracks')
         titleKart.classList.add('kartTracks');
     
         buttonAdd.classList.add('tracks-kart__addCollection');
+        buttonAdd.classList.add('tracks-kart__noInCollection')
     
         // Agregando nodos a su respectivo padre
-
         card.append(imgContainer, details, buttonAdd);
+
+        //Funcionalidad del boton agregar a coleccion
+        function collection() {
+
+            if(!buttonAdd.classList.contains('tracks-kart__inCollection')) {
+                card.classList.remove('bordersNormal')
+                card.classList.add('bordersGreen')
+
+                buttonAdd.classList.remove('tracks-kart__noInCollection')
+                buttonAdd.classList.add('tracks-kart__inCollection')
+
+                buttonAdd.removeChild(textButton);
+
+                textButton = document.createTextNode('En mi colección')
+                buttonAdd.style.color = 'white';
+                buttonAdd.append(textButton);
+
+                card.style.borderWidth = '3px';
+            } else {
+                card.classList.remove('bordersGreen')
+                card.classList.add('bordersNormal')
+
+                buttonAdd.classList.remove('tracks-kart__inCollection')
+                buttonAdd.classList.add('tracks-kart__noInCollection')
+                
+                buttonAdd.removeChild(textButton);
+                
+                textButton = document.createTextNode('Agregar a mi colección')
+                buttonAdd.style.color = 'white';
+                buttonAdd.append(textButton);
+                
+                card.style.borderWidth = '1px';
+            }
+        } 
+        buttonAdd.addEventListener('click', collection)
     
         // Agregando a section en HTML
         tracksSection.append(card);

@@ -20,7 +20,9 @@ let mixPackSection = document.querySelector('#mixPackSection')
 let mixPacklist = [];
 
 
-// Section Paquete Mix Glider
+// Section Paquete Mix Glider agregar contenido
+
+//Variables
 mixPacklist.push(
     {
         imgMixPack: '/assets/packsVariety/8-pack.png',
@@ -46,6 +48,7 @@ mixPacklist.push(
     }
 );
 
+//Funcion que agrega contenido a el navegador
 function addCardsMixPack(array){
     array.forEach(item => {
         // Creando elementos
@@ -113,7 +116,7 @@ function addCardsMixPack(array){
         //Button Add
 
         let buttonAdd = document.createElement('button');
-        let textButton = document.createTextNode('Agregar a colección')
+        let textButton = document.createTextNode('Agregar a mi colección')
         buttonAdd.setAttribute('type', 'button');
         buttonAdd.append(textButton);
     
@@ -125,8 +128,8 @@ function addCardsMixPack(array){
 
         card.classList.add('mixPack-kart');
         card.classList.add('general-card');
+        card.classList.add('bordersNormal');
         imgContainer.classList.add('mixPack-kart__container-img');
-
         details.classList.add('mixPack-kart__details')
         containerCharactersInfo.classList.add('characterKartGliderMixPack')
         character_1.classList.add('kartMixPack');
@@ -139,12 +142,48 @@ function addCardsMixPack(array){
         character_8.classList.add('kartMixPack');
 
         buttonAdd.classList.add('mixPack-kart__addCollection');
+        buttonAdd.classList.add('mixPack-kart__noInCollection')
     
         // Agregando nodos a su respectivo padre
         details.append(containerCharactersInfo, character_1, character_2, character_3, character_4, character_5, character_6, character_7, character_8);
         imgContainer.append(img);
         card.append(imgContainer, details, buttonAdd);
     
+        //Funcionalidad del boton agregar a coleccion
+        function collection() {
+
+            if(!buttonAdd.classList.contains('mixPack-kart__inCollection')) {
+                card.classList.remove('bordersNormal')
+                card.classList.add('bordersGreen')
+
+                buttonAdd.classList.remove('mixPack-kart__noInCollection')
+                buttonAdd.classList.add('mixPack-kart__inCollection')
+
+                buttonAdd.removeChild(textButton);
+
+                textButton = document.createTextNode('En mi colección')
+                buttonAdd.style.color = 'white';
+                buttonAdd.append(textButton);
+
+                card.style.borderWidth = '3px';
+            } else {
+                card.classList.remove('bordersGreen')
+                card.classList.add('bordersNormal')
+
+                buttonAdd.classList.remove('mixPack-kart__inCollection')
+                buttonAdd.classList.add('mixPack-kart__noInCollection')
+                
+                buttonAdd.removeChild(textButton);
+                
+                textButton = document.createTextNode('Agregar a mi colección')
+                buttonAdd.style.color = 'white';
+                buttonAdd.append(textButton);
+                
+                card.style.borderWidth = '1px';
+            }
+        } 
+        buttonAdd.addEventListener('click', collection)
+
         // Agregando a section en HTML
         mixPackSection.append(card);
     });

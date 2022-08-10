@@ -15,14 +15,16 @@ function openCloseMenu(){
 menuButton.addEventListener('click', openCloseMenu);
 
 
-// Section Paquetes Glider
+// Section Paquetes Glider agregar contenido
+
+// Variables
 let gliderPacksSection = document.querySelector('#glidersPacksSection');
 let gliderPacksList = []
 
-// Section Paquetes Glider
-
+// Array con contenido
 gliderPacksList.push(
     {
+        id: 1,
         imgGliderPacks: '/assets/packsVariety/yoshi-waluigi-mario.png',
         characterName_1: 'Yoshi',
         characterName_2: 'Waluigi',
@@ -33,9 +35,23 @@ gliderPacksList.push(
         glider_1: 'Parafoil',
         glider_2: 'Super Glider',
         glider_3: 'Parachute'
+    },
+    {
+        id: 2,
+        imgGliderPacks: '/assets/packsVariety/mario-bowser-peach.png',
+        characterName_1: 'Mario Tanooki',
+        characterName_2: 'Bowser',
+        characterName_3: 'Peach',
+        kart_1: 'Sports Coupe',
+        kart_2: 'Standard Kart',
+        kart_3: 'B-Dasher',
+        glider_1: 'Super Glider',
+        glider_2: 'Bowser Kite',
+        glider_3: 'Peach Parasol'
     }
 );
 
+// Funcion que agrega el contenido a el navegador 
 function addCardsGliderPacks(array) {
     array.forEach(item => {
         // Creando elementos
@@ -79,33 +95,65 @@ function addCardsGliderPacks(array) {
         //Button Add
 
         let buttonAdd = document.createElement('button');
-        let textButton = document.createTextNode('Agregar a colección')
+        let textButton = document.createTextNode('Agregar a mi colección')
         buttonAdd.setAttribute('type', 'button');
         buttonAdd.append(textButton);
     
 
         // Agregando clases y atributos a elementos
 
-
-        
-
         card.classList.add('glidersPacks-kart');
         card.classList.add('general-card');
+        card.classList.add('bordersNormal');
         imgContainer.classList.add('glidersPacks-kart__container-img');
-
         details.classList.add('glidersPacks-kart__details')
         charactersKartsAndGliders.classList.add('characterKartGliderPackGlider')
         characterKartGlider_1.classList.add('kartPackGlider');
         characterKartGlider_2.classList.add('kartPackGlider');
         characterKartGlider_3.classList.add('kartPackGlider');
 
-        buttonAdd.setAttribute('type', 'button');
         buttonAdd.classList.add('glidersPacks-kart__addCollection');
+        buttonAdd.classList.add('glidersPacks-kart__noInCollection')
     
         // Agregando nodos a su respectivo padre
         details.append(charactersKartsAndGliders, characterKartGlider_1, characterKartGlider_2, characterKartGlider_3);
         imgContainer.append(img);
         card.append(imgContainer, details, buttonAdd);
+
+        //Funcionalidad del boton agregar a coleccion
+        function collection() {
+
+            if(!buttonAdd.classList.contains('glidersPacks-kart__inCollection')) {
+                card.classList.remove('bordersNormal')
+                card.classList.add('bordersGreen')
+
+                buttonAdd.classList.remove('glidersPacks-kart__noInCollection')
+                buttonAdd.classList.add('glidersPacks-kart__inCollection')
+
+                buttonAdd.removeChild(textButton);
+
+                textButton = document.createTextNode('En mi colección')
+                buttonAdd.style.color = 'white';
+                buttonAdd.append(textButton);
+
+                card.style.borderWidth = '3px';
+            } else {
+                card.classList.remove('bordersGreen')
+                card.classList.add('bordersNormal')
+
+                buttonAdd.classList.remove('glidersPacks-kart__inCollection')
+                buttonAdd.classList.add('glidersPacks-kart__noInCollection')
+                
+                buttonAdd.removeChild(textButton);
+                
+                textButton = document.createTextNode('Agregar a mi colección')
+                buttonAdd.style.color = 'white';
+                buttonAdd.append(textButton);
+                
+                card.style.borderWidth = '1px';
+            }
+        } 
+        buttonAdd.addEventListener('click', collection)
     
         // Agregando a section en HTML
         gliderPacksSection.append(card);
