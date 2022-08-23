@@ -99,7 +99,7 @@ packsList.push(
     },
     {
         id: 7,
-        imgPack: '/assets/logos-marioKart/img-noKart.png',
+        imgPack: '/assets/packs/wario-mario-waluigi-luigi.png',
         characterName_1: 'Wario',
         characterName_2: 'Mario',
         characterName_3: 'Waluigi',
@@ -111,7 +111,7 @@ packsList.push(
     },
     {
         id: 8,
-        imgPack: '/assets/logos-marioKart/img-noKart.png',
+        imgPack: '/assets/packs/dryBones-bowser-shyGuy-Koopa.png',
         characterName_1: 'Dry Bones',
         characterName_2: 'Bowser',
         characterName_3: 'Shy Guy',
@@ -123,7 +123,7 @@ packsList.push(
     },
     {
         id: 9,
-        imgPack: '/assets/logos-marioKart/img-noKart.png',
+        imgPack: '/assets/packs/babyLuigi-babyPeach-babyBowser-BabyMario.png',
         characterName_1: 'Baby Luigi',
         characterName_2: 'Baby Peach',
         characterName_3: 'Bowser Jr.',

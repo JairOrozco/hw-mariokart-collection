@@ -39,6 +39,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
 }
 
 .nav {
@@ -100,6 +101,7 @@ header {
 main {
     width: 100%;
     position: relative;
+    user-select: none;
 }
 
 // Estilos generales section y cards
@@ -137,18 +139,23 @@ main {
     
     .glidersPacks-kart {
         width: 270px;
-        height: 370px;
+        height: 380px;
         &__container-img {
             display: flex;
             justify-content: center;
             align-items: center;
+            position: absolute;
+            top: 20px;
+            user-select: none;
             img {
                 width:270px;
                 height: 190px;
             }
         }
         &__details {
-            width: 75%;
+            width: 90%;
+            position: absolute;
+            top: 215px;
             margin: 10px 0 15px 0;
             font-family: $font_main;
             font-size: 1.2rem;
@@ -157,6 +164,8 @@ main {
         &__addCollection {
             width: 60%;
             height: 35px;
+            position: absolute;
+            bottom: 25px;
             font-family: $font_main;
             font-size: 1.2rem;
             border-radius: 5px;

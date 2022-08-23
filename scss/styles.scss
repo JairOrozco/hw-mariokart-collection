@@ -38,6 +38,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
 }
 
 .nav {
@@ -99,6 +100,7 @@ header {
 main {
     width: 100%;
     position: relative;
+    user-select: none;
 }
 
 // Tarjetas vinculos
@@ -135,6 +137,7 @@ main {
             justify-content: center;
             align-items: center;
             margin-bottom: 15px;
+            user-select: none;
         }
         &__button {
             position: absolute;

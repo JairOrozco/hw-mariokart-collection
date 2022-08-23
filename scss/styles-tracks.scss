@@ -39,6 +39,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
 }
 
 .nav {
@@ -100,6 +101,7 @@ header {
 main {
     width: 100%;
     position: relative;
+    user-select: none;
 }
 
 // Estilos generales section y cards
@@ -143,6 +145,7 @@ main {
             display: flex;
             justify-content: center;
             align-items: center;
+            user-select: none;
             img {
                 width:260px;
                 height: 180px;
