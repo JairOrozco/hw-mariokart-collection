@@ -3,16 +3,19 @@
 // Abrir y cerrar el menu
 const menuButton = document.querySelector('#menuButton');
 const menu = document.querySelector('#menu');
+const moreCategories = document.querySelector('#moreCategories')
 
 function openCloseMenu(){
 
     menuButton.classList.toggle('hamburguerMenu')
-    menuButton.classList.toggle('xMenu')
+    menuButton.classList.toggle('closeImgMenu')
 
     menu.classList.toggle('inactive');
 };
 
 menuButton.addEventListener('click', openCloseMenu);
+
+moreCategories.style.fontWeight = '400';
 
 
 // Section Yoshi Eggs agregando contenido
@@ -21,50 +24,88 @@ menuButton.addEventListener('click', openCloseMenu);
 let yoshiEggsSection = document.querySelector('#yoshiEggsSection')
 let yoshiEggsList = [];
 
-
 // Array con contenido
 yoshiEggsList.push(
     {
+        id: 1001,
         imgKart: '/assets/yoshis/whiteYoshi.png',
         characterName: 'White Yoshi',
         kart: 'Standard Kart'
     },
     {
+        id: 1002,
         imgKart: '/assets/yoshis/blackYoshi.png',
         characterName: 'Black Yoshi',
         kart: 'Standard Kart'
     },
     {
+        id: 1003,
         imgKart: '/assets/yoshis/blueYoshi.png',
         characterName: 'Blue Yoshi',
         kart: 'Standard Kart'
     },
     {
+        id: 1004,
         imgKart: '/assets/yoshis/blueLight-Yoshi.png',
         characterName: 'Light-Blue Yoshi',
         kart: 'Standard Kart'
     },
     {
+        id: 1005,
         imgKart: '/assets/yoshis/orangeYoshi.png',
         characterName: 'Orange Yoshi',
         kart: 'Standard Kart'
     },
     {
+        id: 1006,
         imgKart: '/assets/yoshis/yellowYoshi.png',
         characterName: 'Yellow Yoshi',
         kart: 'Standard Kart'
     },
     {
+        id: 1007,
         imgKart: '/assets/yoshis/pinkYoshi.png',
         characterName: 'Pink Yoshi',
         kart: 'Standard Kart'
     },
     {
+        id: 1008,
         imgKart: '/assets/yoshis/greenYoshi.png',
         characterName: 'Green Yoshi',
         kart: 'Standard Kart'
     },
 )
+
+// Funcion que revisa si hay algo en el LOCALSTORAGE 
+function alredyInCollectionList() {
+
+    const item = JSON.parse(localStorage.getItem('yoshiEggs'));
+    let karts;
+
+    if(item) {
+        karts = item;
+    } else {
+        karts = {};
+    }
+
+    return karts;
+}
+
+//Funcion que agrega o quita contenido al LocalStorage
+function kartInCollection(kart) {
+
+    let kartsInCollectionList = alredyInCollectionList();
+    
+    if(kartsInCollectionList[kart.id]) {
+
+        kartsInCollectionList[kart.id] = undefined;
+
+    }else {
+        kartsInCollectionList[kart.id] = kart;
+    }
+
+    localStorage.setItem('yoshiEggs', JSON.stringify(kartsInCollectionList))
+}
 
 // Funcion que agrega contenido a el navegador
 function addCardsYoshiEggs(array) {
@@ -83,25 +124,14 @@ function addCardsYoshiEggs(array) {
         //Detalles Nombre y Kart
         let details = document.createElement('div');
 
-        // Nombre
-        let titleCharacter = document.createElement('p');
-        let bLabelCharacter = document.createElement('b')
-        let textBLabelCharacter = document.createTextNode('Personaje: ');
-        bLabelCharacter.append(textBLabelCharacter);
-        titleCharacter.append(bLabelCharacter)
-        let characterName = document.createTextNode(item.characterName);
-        titleCharacter.append(characterName);
+        // Nombre y Kart
+        let character = document.createElement('p');
+        let bLabel = document.createElement('b')
+        let characterName = document.createTextNode(`${item.characterName} - ${item.kart}`);
+        bLabel.append(characterName);
+        character.append(bLabel)
 
-        //Kart
-        let titleKart = document.createElement('p');
-        let bLabelKart = document.createElement('b')
-        let textBLabelKart = document.createTextNode('Kart: ');
-        bLabelKart.append(textBLabelKart);
-        titleKart.append(bLabelKart);
-        let kartName = document.createTextNode(item.kart);
-        titleKart.append(kartName);
-
-        details.append(titleCharacter, titleKart);
+        details.append(character);
 
         //Button Add
 
@@ -112,51 +142,54 @@ function addCardsYoshiEggs(array) {
     
 
         // Agregando clases a elementos
-        card.classList.add('yoshis-eggs-kart');
         card.classList.add('general-card');
+        card.classList.add('yoshis-eggs-kart');
         card.classList.add('bordersNormal');
+        imgContainer.classList.add('container-img');
         imgContainer.classList.add('yoshis-eggs-kart__container-img');
-        details.classList.add('yoshis-eggs-kart__details')
-        titleCharacter.classList.add('characterYoshi')
-        titleKart.classList.add('kartYoshi');
-    
-        buttonAdd.classList.add('yoshis-eggs-kart__addCollection');
-        buttonAdd.classList.add('yoshis-eggs-kart__noInCollection')
+        details.classList.add('details');
+        details.classList.add('yoshis-eggs-kart__details');
+        character.classList.add('characterYoshi')
+        buttonAdd.classList.add('addCollection');
+        buttonAdd.classList.add('noInCollection')
     
         // Agregando nodos a su respectivo padre
         card.append(imgContainer, details, buttonAdd);
 
+        // Revisa si ya está el kart en la coleccion, si si mantiene los estilos en verde
+        if (alredyInCollectionList()[item.id]) {
+            card.classList.add('bordersGreen');
+            buttonAdd.classList.add('inCollection')
+            textButton.textContent = 'En mi colección'
+            buttonAdd.style.color = 'white';
+        }
+
         //Funcionalidad del boton agregar a coleccion
         function collection() {
 
-            if(!buttonAdd.classList.contains('yoshis-eggs-kart__inCollection')) {
+            if(!buttonAdd.classList.contains('inCollection')) {
                 card.classList.remove('bordersNormal')
                 card.classList.add('bordersGreen')
 
-                buttonAdd.classList.remove('yoshis-eggs-kart__noInCollection')
-                buttonAdd.classList.add('yoshis-eggs-kart__inCollection')
+                buttonAdd.classList.remove('noInCollection')
+                buttonAdd.classList.add('inCollection')
 
-                buttonAdd.removeChild(textButton);
-
-                textButton = document.createTextNode('En mi colección')
+                textButton.textContent = 'En mi colección';
                 buttonAdd.style.color = 'white';
-                buttonAdd.append(textButton);
 
-                card.style.borderWidth = '3px';
+                kartInCollection(item);
+
             } else {
                 card.classList.remove('bordersGreen')
                 card.classList.add('bordersNormal')
 
-                buttonAdd.classList.remove('yoshis-eggs-kart__inCollection')
-                buttonAdd.classList.add('yoshis-eggs-kart__noInCollection')
+                buttonAdd.classList.remove('inCollection')
+                buttonAdd.classList.add('noInCollection')
                 
-                buttonAdd.removeChild(textButton);
-                
-                textButton = document.createTextNode('Agregar a mi colección')
+                textButton.textContent = 'Agregar a mi colección';
                 buttonAdd.style.color = 'white';
-                buttonAdd.append(textButton);
-                
-                card.style.borderWidth = '1px';
+
+                kartInCollection(item);
             }
         } 
         buttonAdd.addEventListener('click', collection)

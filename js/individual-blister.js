@@ -4,17 +4,19 @@
 // Abrir y cerrar el menu
 const menuButton = document.querySelector('#menuButton');
 const menu = document.querySelector('#menu');
+const moreCategories = document.querySelector('#moreCategories')
 
 function openCloseMenu(){
 
     menuButton.classList.toggle('hamburguerMenu')
-    menuButton.classList.toggle('xMenu')
+    menuButton.classList.toggle('closeImgMenu')
 
     menu.classList.toggle('inactive');
 };
 
 menuButton.addEventListener('click', openCloseMenu);
 
+moreCategories.style.fontWeight = '400';
 
 // Section Blister Individual agregando contenido
 
@@ -22,32 +24,30 @@ menuButton.addEventListener('click', openCloseMenu);
 const individualBlisterSection = document.querySelector('#individualBlisterSection');
 let kartsListBlister = [];
 
-const myCollection_individualBlisterSection = document.querySelector('#myCollection_individualBlisterSection');
-
 // Array con todo el contenido
 kartsListBlister.push(
     {
         id: 1,
         imgKart: '/assets/blister/mario-standart.png',
-        characterName: 'Mario',
+        characterName: 'Mario Bros',
         kart: 'Standard Kart'
     },
     {
         id: 2,
         imgKart: '/assets/blister/mario-circuit.png',
-        characterName: 'Mario',
+        characterName: 'Mario Bros',
         kart: 'Circuit Special'
     },
     {
         id: 3,
         imgKart: '/assets/blister/mario-pwing.png',
-        characterName: 'Mario',
+        characterName: 'Mario Bros',
         kart: 'P-Wing'
     },
     {
         id: 4,
         imgKart: '/assets/blister/mario-wildwing.png',
-        characterName: 'Mario',
+        characterName: 'Mario Bros',
         kart: 'Wild Wing'
     },
     {
@@ -292,6 +292,37 @@ kartsListBlister.push(
     }
 )
 
+// Funcion que revisa si hay algo en el LOCALSTORAGE 
+function alredyInCollectionList() {
+
+    const item = JSON.parse(localStorage.getItem('individualBlister'));
+    let karts;
+
+    if(item) {
+        karts = item;
+    } else {
+        karts = {};
+    }
+
+    return karts;
+}
+
+//Funcion que agrega o quita contenido al LocalStorage
+function kartInCollection(kart) {
+
+    let kartsInCollectionList = alredyInCollectionList();
+    
+    if(kartsInCollectionList[kart.id]) {
+
+        kartsInCollectionList[kart.id] = undefined;
+
+    }else {
+        kartsInCollectionList[kart.id] = kart;
+    }
+
+    localStorage.setItem('individualBlister', JSON.stringify(kartsInCollectionList))
+}
+
 //Funcion que agrega el contenido a el navegador y funcionalidades de boton
 function addCards(array) {
     array.forEach(item => {
@@ -310,28 +341,16 @@ function addCards(array) {
         //Detalles Nombre y Kart
         let details = document.createElement('div');
 
-        // Nombre
-        let titleCharacter = document.createElement('p');
+        // Nombre y Kart
+        let character = document.createElement('p');
         let bLabelCharacter = document.createElement('b')
-        let textBLabelCharacter = document.createTextNode('Personaje: ');
-        bLabelCharacter.append(textBLabelCharacter);
-        titleCharacter.append(bLabelCharacter)
-        let characterName = document.createTextNode(item.characterName);
-        titleCharacter.append(characterName);
+        let characterName = document.createTextNode(`${item.characterName} - ${item.kart}`);
+        bLabelCharacter.append(characterName);
+        character.append(bLabelCharacter);
 
-        //Kart
-        let titleKart = document.createElement('p');
-        let bLabelKart = document.createElement('b')
-        let textBLabelKart = document.createTextNode('Kart: ');
-        bLabelKart.append(textBLabelKart);
-        titleKart.append(bLabelKart);
-        let kartName = document.createTextNode(item.kart);
-        titleKart.append(kartName);
-
-        details.append(titleCharacter, titleKart);
+        details.append(character);
 
         //Button Add
-
         let buttonAdd = document.createElement('button');
         let textButton = document.createTextNode('Agregar a mi colección')
         buttonAdd.setAttribute('type', 'button');
@@ -340,52 +359,53 @@ function addCards(array) {
 
 
         // Agregando clases a elementos
-        card.classList.add('blister-kart');
         card.classList.add('general-card');
+        card.classList.add('blister-kart');
         card.classList.add('bordersNormal');
-        imgContainer.classList.add('blister-kart__container-img');
-        details.classList.add('blister-kart__details')
-        titleCharacter.classList.add('characterBlister')
-        titleKart.classList.add('kartBlister');
-    
-        buttonAdd.classList.add('blister-kart__addCollection');
-        buttonAdd.classList.add('blister-kart__noInCollection')
+        imgContainer.classList.add('container-img');
+        details.classList.add('details')
+        character.classList.add('characterIndividualBlister')
+        buttonAdd.classList.add('addCollection');
+        buttonAdd.classList.add('noInCollection')
     
         // Agregando nodos a su respectivo padre
         card.append(imgContainer, details, buttonAdd);
 
+        // Revisa si ya está el kart en la coleccion, si si mantiene los estilos en verde
+        if (alredyInCollectionList()[item.id]) {
+            card.classList.add('bordersGreen');
+            buttonAdd.classList.add('inCollection')
+            textButton.textContent = 'En mi colección'
+            buttonAdd.style.color = 'white';
+        }
 
         //Funcionalidad del boton agregar a coleccion
         function collection() {
 
-            if(!buttonAdd.classList.contains('blister-kart__inCollection')) {
+            if(!buttonAdd.classList.contains('inCollection')) {
+            
                 card.classList.remove('bordersNormal')
                 card.classList.add('bordersGreen')
 
-                buttonAdd.classList.remove('blister-kart__noInCollection')
-                buttonAdd.classList.add('blister-kart__inCollection')
+                buttonAdd.classList.remove('noInCollection')
+                buttonAdd.classList.add('inCollection')
 
-                buttonAdd.removeChild(textButton);
-
-                textButton = document.createTextNode('En mi colección')
+                textButton.textContent = 'En mi colección';
                 buttonAdd.style.color = 'white';
-                buttonAdd.append(textButton);
 
-                card.style.borderWidth = '3px';
+                kartInCollection(item);
+
             } else {
                 card.classList.remove('bordersGreen')
                 card.classList.add('bordersNormal')
 
-                buttonAdd.classList.remove('blister-kart__inCollection')
-                buttonAdd.classList.add('blister-kart__noInCollection')
-                
-                buttonAdd.removeChild(textButton);
-                
-                textButton = document.createTextNode('Agregar a mi colección')
+                buttonAdd.classList.remove('inCollection')
+                buttonAdd.classList.add('noInCollection')
+
+                textButton.textContent = 'Agregar a mi colección';
                 buttonAdd.style.color = 'white';
-                buttonAdd.append(textButton);
-                
-                card.style.borderWidth = '1px';
+
+                kartInCollection(item);
             }
         } 
         buttonAdd.addEventListener('click', collection)

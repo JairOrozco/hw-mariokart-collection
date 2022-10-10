@@ -3,17 +3,19 @@
 // Abrir y cerrar el menu
 const menuButton = document.querySelector('#menuButton');
 const menu = document.querySelector('#menu');
+const moreCategories = document.querySelector('#moreCategories')
 
 function openCloseMenu(){
 
     menuButton.classList.toggle('hamburguerMenu')
-    menuButton.classList.toggle('xMenu')
+    menuButton.classList.toggle('closeImgMenu')
 
     menu.classList.toggle('inactive');
 };
 
 menuButton.addEventListener('click', openCloseMenu);
 
+moreCategories.style.fontWeight = '400';
 
 // Section Blister Paravela agregando contenido
 
@@ -22,122 +24,153 @@ const individualBlisterGliderSection = document.querySelector('#individualBliste
 let kartsListBlisterGlider = [];
 
 
-
 // Array con contenido
 kartsListBlisterGlider.push(
     {
-        id: 1,
+        id: 201,
         imgKart: '/assets/glider/mario-standard.png',
-        characterName: 'Mario',
+        characterName: 'Mario Bros',
         kart: 'Standard Kart',
         glider: 'Super Glider'
     },
     {
-        id: 2,
+        id: 202,
         imgKart: '/assets/glider/mario-pipeFrame.png',
-        characterName: 'Mario',
+        characterName: 'Mario Bros',
         kart: 'Pipe Frame',
         glider: 'Parachute'
     },
     {
-        id: 3,
+        id: 203,
         imgKart: '/assets/glider/luigi-pWing.png',
         characterName: 'Luigi',
         kart: 'P-Wing',
         glider: 'Cloud Glider'
     },
     {
-        id: 4,
+        id: 204,
         imgKart: '/assets/glider/peach-bDasher.png',
         characterName: 'Peach',
         kart: 'B-Dasher',
         glider: 'Peach Parasol'
     },
     {
-        id: 5,
+        id: 205,
         imgKart: '/assets/glider/daisy-standard.png',
         characterName: 'Princess Daisy',
         kart: 'Standard Kart',
         glider: 'Flower Glider'
     },
     {
-        id: 6,
+        id: 206,
         imgKart: '/assets/glider/rosalina-pWing.png',
         characterName: 'Rosalina',
         kart: 'P-Wing',
         glider: 'Cloud Glider'
     },
     {
-        id: 7,
+        id: 207,
         imgKart: '/assets/glider/mario-standard.png',
         characterName: 'Yoshi',
         kart: 'Sports Coupe',
         glider: 'Parafoil'
     },
     {
-        id: 8,
+        id: 208,
         imgKart: '/assets/glider/blueYoshi-pipeFrame.png',
         characterName: 'Blue Yoshi',
         kart: 'Pipe Frame',
         glider: 'Super Glider'
     },
     {
-        id: 9,
+        id: 209,
         imgKart: '/assets/glider/toad-pWing.png',
         characterName: 'Toad',
         kart: 'P-Wing',
         glider: 'Plane Glider'
     },
     {
-        id: 10,
+        id: 210,
         imgKart: '/assets/glider/donkeyKong-bDasher.png',
         characterName: 'Donkey Kong',
         kart: 'B-Dasher',
         glider: 'Super Glider'
     },
     {
-        id: 11,
+        id: 211,
         imgKart: '/assets/glider/bowser-standard.png',
         characterName: 'Bowser',
         kart: 'Standard Kart',
         glider: 'Bowser Kite'
     },
     {
-        id: 12,
+        id: 212,
         imgKart: '/assets/glider/bowserJr-sportsCoupe.png',
         characterName: 'Bowser Jr.',
         kart: 'Sports Coupe',
         glider: 'Bowser Kite'
     },
     {
-        id: 13,
+        id: 213,
         imgKart: '/assets/glider/shyGuy-bDasher.png',
         characterName: 'Shy Guy',
         kart: 'B-Dasher',
         glider: 'Plane Glider'
     },
     {
-        id: 14,
+        id: 214,
         imgKart: '/assets/glider/wario-sportsCoupe.png',
         characterName: 'Wario',
         kart: 'Sports Coupe',
         glider: 'Waddle Wing'
     },
     {
-        id: 15,
+        id: 215,
         imgKart: '/assets/glider/wario-bDasher.png',
         characterName: 'Wario',
         kart: 'B-Dasher',
         glider: 'Wario Wing'
     },
     {
-        id: 16,
+        id: 216,
         imgKart: '/assets/glider/lakitu-standard.png',
         characterName: 'Lakitu',
         kart: 'Standard Kart',
         glider: 'Parafoil'
     },
 )
+
+
+// Funcion que revisa si hay algo en el LOCALSTORAGE 
+function alredyInCollectionList() {
+
+    const item = JSON.parse(localStorage.getItem('individualGlider'));
+    let karts;
+
+    if(item) {
+        karts = item;
+    } else {
+        karts = {};
+    }
+
+    return karts;
+}
+
+//Funcion que agrega o quita contenido al LocalStorage
+function kartInCollection(kart) {
+
+    let kartsInCollectionList = alredyInCollectionList();
+    
+    if(kartsInCollectionList[kart.id]) {
+
+        kartsInCollectionList[kart.id] = undefined;
+
+    }else {
+        kartsInCollectionList[kart.id] = kart;
+    }
+
+    localStorage.setItem('individualGlider', JSON.stringify(kartsInCollectionList))
+}
 
 // Funcion para agregar contenido al navegador
 function addCardsGlider(array) {
@@ -157,37 +190,25 @@ function addCardsGlider(array) {
         //Detalles Nombre y Kart
         let details = document.createElement('div');
 
-        // Nombre
-        let titleCharacter = document.createElement('p');
+        // Nombre y Kart
+        let character = document.createElement('p');
         let bLabelCharacter = document.createElement('b')
-        let textBLabelCharacter = document.createTextNode('Personaje: ');
-        bLabelCharacter.append(textBLabelCharacter);
-        titleCharacter.append(bLabelCharacter)
-        let characterName = document.createTextNode(item.characterName);
-        titleCharacter.append(characterName);
-
-        //Kart
-        let titleKart = document.createElement('p');
-        let bLabelKart = document.createElement('b')
-        let textBLabelKart = document.createTextNode('Kart: ');
-        bLabelKart.append(textBLabelKart);
-        titleKart.append(bLabelKart);
-        let kartName = document.createTextNode(item.kart);
-        titleKart.append(kartName);
+        let characterName = document.createTextNode(`${item.characterName} - ${item.kart}`);
+        bLabelCharacter.append(characterName)
+        character.append(bLabelCharacter);
 
         //Paravela
-        let titleGlider = document.createElement('p');
+        let glider = document.createElement('p');
         let bLabelGlider = document.createElement('b')
         let textBLabelGlider = document.createTextNode('Planeador: ')
         bLabelGlider.append(textBLabelGlider);
-        titleGlider.append(bLabelGlider);
+        glider.append(bLabelGlider);
         let gliderName = document.createTextNode(item.glider);
-        titleGlider.append(gliderName);
+        glider.append(gliderName);
 
-        details.append(titleCharacter, titleKart, titleGlider);
+        details.append(character, glider);
 
         //Button Add
-
         let buttonAdd = document.createElement('button');
         let textButton = document.createTextNode('Agregar a mi colección')
         buttonAdd.setAttribute('type', 'button');
@@ -195,55 +216,59 @@ function addCardsGlider(array) {
     
 
         // Agregando clases a elementos
-        card.classList.add('blister-glider-kart');
         card.classList.add('general-card');
+        card.classList.add('blister-glider-kart');
         card.classList.add('bordersNormal');
-        imgContainer.classList.add('blister-glider-kart__container-img');
-        details.classList.add('blister-glider-kart__details')
+        imgContainer.classList.add('container-img');
+        details.classList.add('details')
+        character.classList.add('characterBlisterGlider')
+        glider.classList.add('characterBlisterGlider');
+        buttonAdd.classList.add('addCollection');
+        buttonAdd.classList.add('noInCollection');
 
-        titleCharacter.classList.add('characterBlisterGlider')
-        titleKart.classList.add('kartBlisterGlider');
-        titleGlider.classList.add('gliderBlisterGlider');
-    
-        buttonAdd.classList.add('blister-glider-kart__addCollection');
-        buttonAdd.classList.add('blister-glider-kart__noInCollection');
         // Agregando nodos a su respectivo padre
-
         card.append(imgContainer, details, buttonAdd);
 
+        // Revisa si ya está el kart en la coleccion, si si mantiene los estilos en verde
+        if (alredyInCollectionList()[item.id]) {
+            card.classList.add('bordersGreen');
+            buttonAdd.classList.add('inCollection')
+            textButton.textContent = 'En mi colección'
+            buttonAdd.style.color = 'white';
+        }
         //Funcionalidad del boton agregar a coleccion
         function collection() {
 
-            if(!buttonAdd.classList.contains('blister-glider-kart__inCollection')) {
+        
+            if(!buttonAdd.classList.contains('inCollection')) {
                 card.classList.remove('bordersNormal')
                 card.classList.add('bordersGreen')
+            
+                buttonAdd.classList.remove('noInCollection')
+                buttonAdd.classList.add('inCollection')
+            
+                textButton.textContent = 'En mi colección'
 
-                buttonAdd.classList.remove('blister-glider-kart__noInCollection')
-                buttonAdd.classList.add('blister-glider-kart__inCollection')
-
-                buttonAdd.removeChild(textButton);
-
-                textButton = document.createTextNode('En mi colección')
                 buttonAdd.style.color = 'white';
-                buttonAdd.append(textButton);
-
-                card.style.borderWidth = '3px';
+            
+                kartInCollection(item);
+            
             } else {
                 card.classList.remove('bordersGreen')
                 card.classList.add('bordersNormal')
+            
+                buttonAdd.classList.remove('inCollection')
+                buttonAdd.classList.add('noInCollection')
 
-                buttonAdd.classList.remove('blister-glider-kart__inCollection')
-                buttonAdd.classList.add('blister-glider-kart__noInCollection')
-                
-                buttonAdd.removeChild(textButton);
-                
-                textButton = document.createTextNode('Agregar a mi colección')
+
+                textButton.textContent = 'Agregar a mi colección'
+
                 buttonAdd.style.color = 'white';
-                buttonAdd.append(textButton);
-                
-                card.style.borderWidth = '1px';
+
+                kartInCollection(item);
             }
-        } 
+        }
+
         buttonAdd.addEventListener('click', collection)
 
     
@@ -252,3 +277,15 @@ function addCardsGlider(array) {
     });
 }
 addCardsGlider(kartsListBlisterGlider);
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,16 +3,19 @@
 // Abrir y cerrar el menu
 const menuButton = document.querySelector('#menuButton');
 const menu = document.querySelector('#menu');
+const moreCategories = document.querySelector('#moreCategories')
 
 function openCloseMenu(){
 
     menuButton.classList.toggle('hamburguerMenu')
-    menuButton.classList.toggle('xMenu')
+    menuButton.classList.toggle('closeImgMenu')
 
     menu.classList.toggle('inactive');
 };
 
 menuButton.addEventListener('click', openCloseMenu);
+
+moreCategories.style.fontWeight = '400';
 
 
 // Section Paquetes Glider agregar contenido
@@ -24,11 +27,11 @@ let gliderPacksList = []
 // Array con contenido
 gliderPacksList.push(
     {
-        id: 1,
+        id: 601,
         imgGliderPacks: '/assets/packsVariety/yoshi-waluigi-mario.png',
         characterName_1: 'Yoshi',
         characterName_2: 'Waluigi',
-        characterName_3: 'Mario',
+        characterName_3: 'Mario Bros',
         kart_1: 'Sports Coupe',
         kart_2: 'B-Dasher',
         kart_3: 'Pipe Frame',
@@ -37,7 +40,7 @@ gliderPacksList.push(
         glider_3: 'Parachute'
     },
     {
-        id: 2,
+        id: 602,
         imgGliderPacks: '/assets/packsVariety/mario-bowser-peach.png',
         characterName_1: 'Mario Tanooki',
         characterName_2: 'Bowser',
@@ -50,6 +53,40 @@ gliderPacksList.push(
         glider_3: 'Peach Parasol'
     }
 );
+
+
+// Funcion que revisa si hay algo en el LOCALSTORAGE 
+function alredyInCollectionList() {
+
+    const item = JSON.parse(localStorage.getItem('packGlider'));
+    let packs;
+
+    if(item) {
+        packs = item;
+    } else {
+        packs = {};
+    }
+
+    return packs;
+}
+
+
+//Funcion que agrega o quita contenido al LocalStorage
+function packsInCollection(pack) {
+
+    let packsInCollectionList = alredyInCollectionList();
+    
+    if(packsInCollectionList[pack.id]) {
+
+        packsInCollectionList[pack.id] = undefined;
+
+    }else {
+        packsInCollectionList[pack.id] = pack;
+    }
+
+    localStorage.setItem('packGlider', JSON.stringify(packsInCollectionList))
+}
+
 
 // Funcion que agrega el contenido a el navegador 
 function addCardsGliderPacks(array) {
@@ -67,28 +104,27 @@ function addCardsGliderPacks(array) {
         //Detalles Nombre y Kart
         let details = document.createElement('div');
 
-        // Nombre y Vehiculo encabezado
-        let charactersKartsAndGliders = document.createElement('p');
-        let lettersBoldCharactersKartsAndGliders = document.createElement('b')
-        let charactersKartsAndGlidersBold = document.createTextNode('Personajes, karts, planeadores:');
-        lettersBoldCharactersKartsAndGliders.append(charactersKartsAndGlidersBold);
-        charactersKartsAndGliders.append(lettersBoldCharactersKartsAndGliders);
-
         //Personajes y Vehiculos
         //Personaje 1
         let characterKartGlider_1 = document.createElement('p');
-        let contentCharacterKartGlider_1 = document.createTextNode(`- ${item.characterName_1}, ${item.kart_1}, ${item.glider_1}`);
-        characterKartGlider_1.append(contentCharacterKartGlider_1);
+        let boldLetter_1 = document.createElement('b');
+        let contentCharacterKartGlider_1 = document.createTextNode(`${item.characterName_1} - ${item.kart_1} - ${item.glider_1}`);
+        boldLetter_1.append(contentCharacterKartGlider_1);
+        characterKartGlider_1.append(boldLetter_1);
 
         //Personaje 2
         let characterKartGlider_2 = document.createElement('p');
-        let contentCharacterKartGlider_2 = document.createTextNode(`- ${item.characterName_2}, ${item.kart_2}, ${item.glider_2}`);
-        characterKartGlider_2.append(contentCharacterKartGlider_2);
+        let boldLetter_2 = document.createElement('b');
+        let contentCharacterKartGlider_2 = document.createTextNode(`${item.characterName_2} - ${item.kart_2} - ${item.glider_2}`);
+        boldLetter_2.append(contentCharacterKartGlider_2);
+        characterKartGlider_2.append(boldLetter_2);
 
         //Personaje 3
         let characterKartGlider_3 = document.createElement('p');
-        let contentCharacterKartGlider_3 = document.createTextNode(`- ${item.characterName_3}, ${item.kart_3}, ${item.glider_3}`);
-        characterKartGlider_3.append(contentCharacterKartGlider_3);
+        let boldLetter_3 = document.createElement('b');
+        let contentCharacterKartGlider_3 = document.createTextNode(`${item.characterName_3} - ${item.kart_3} - ${item.glider_3}`);
+        boldLetter_3.append(contentCharacterKartGlider_3);
+        characterKartGlider_3.append(boldLetter_3);
 
         
 
@@ -102,55 +138,58 @@ function addCardsGliderPacks(array) {
 
         // Agregando clases y atributos a elementos
 
-        card.classList.add('glidersPacks-kart');
         card.classList.add('general-card');
+        card.classList.add('glidersPacks-kart');
         card.classList.add('bordersNormal');
+        imgContainer.classList.add('container-img');
         imgContainer.classList.add('glidersPacks-kart__container-img');
+        details.classList.add('details')
         details.classList.add('glidersPacks-kart__details')
-        charactersKartsAndGliders.classList.add('characterKartGliderPackGlider')
-        characterKartGlider_1.classList.add('kartPackGlider');
-        characterKartGlider_2.classList.add('kartPackGlider');
-        characterKartGlider_3.classList.add('kartPackGlider');
-
-        buttonAdd.classList.add('glidersPacks-kart__addCollection');
-        buttonAdd.classList.add('glidersPacks-kart__noInCollection')
+        characterKartGlider_1.classList.add('characterPackGlider');
+        characterKartGlider_2.classList.add('characterPackGlider');
+        characterKartGlider_3.classList.add('characterPackGlider');
+        buttonAdd.classList.add('addCollection');
+        buttonAdd.classList.add('noInCollection')
     
         // Agregando nodos a su respectivo padre
-        details.append(charactersKartsAndGliders, characterKartGlider_1, characterKartGlider_2, characterKartGlider_3);
+        details.append(characterKartGlider_1, characterKartGlider_2, characterKartGlider_3);
         imgContainer.append(img);
         card.append(imgContainer, details, buttonAdd);
+
+        // Revisa si ya está el pack en la coleccion, si si mantiene los estilos en verde
+        if (alredyInCollectionList()[item.id]) {
+            card.classList.add('bordersGreen');
+            buttonAdd.classList.add('inCollection')
+            textButton.textContent = 'En mi colección'
+            buttonAdd.style.color = 'white';
+        }
 
         //Funcionalidad del boton agregar a coleccion
         function collection() {
 
-            if(!buttonAdd.classList.contains('glidersPacks-kart__inCollection')) {
+            if(!buttonAdd.classList.contains('inCollection')) {
                 card.classList.remove('bordersNormal')
                 card.classList.add('bordersGreen')
 
-                buttonAdd.classList.remove('glidersPacks-kart__noInCollection')
-                buttonAdd.classList.add('glidersPacks-kart__inCollection')
+                buttonAdd.classList.remove('noInCollection')
+                buttonAdd.classList.add('inCollection')
 
-                buttonAdd.removeChild(textButton);
-
-                textButton = document.createTextNode('En mi colección')
+                textButton.textContent = 'En mi colección';
                 buttonAdd.style.color = 'white';
-                buttonAdd.append(textButton);
 
-                card.style.borderWidth = '3px';
+                packsInCollection(item);
+
             } else {
                 card.classList.remove('bordersGreen')
                 card.classList.add('bordersNormal')
 
-                buttonAdd.classList.remove('glidersPacks-kart__inCollection')
-                buttonAdd.classList.add('glidersPacks-kart__noInCollection')
+                buttonAdd.classList.remove('inCollection')
+                buttonAdd.classList.add('noInCollection')
                 
-                buttonAdd.removeChild(textButton);
-                
-                textButton = document.createTextNode('Agregar a mi colección')
+                textButton.textContent = 'Agregar a mi colección';
                 buttonAdd.style.color = 'white';
-                buttonAdd.append(textButton);
-                
-                card.style.borderWidth = '1px';
+
+                packsInCollection(item);
             }
         } 
         buttonAdd.addEventListener('click', collection)

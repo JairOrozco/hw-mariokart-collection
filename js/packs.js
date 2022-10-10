@@ -4,17 +4,19 @@
 // Abrir y cerrar el menu
 const menuButton = document.querySelector('#menuButton');
 const menu = document.querySelector('#menu');
+const moreCategories = document.querySelector('#moreCategories')
 
 function openCloseMenu(){
 
     menuButton.classList.toggle('hamburguerMenu')
-    menuButton.classList.toggle('xMenu')
+    menuButton.classList.toggle('closeImgMenu')
 
     menu.classList.toggle('inactive');
 };
 
 menuButton.addEventListener('click', openCloseMenu);
 
+moreCategories.style.fontWeight = '400' 
 
 // Section Paquetes agregar contenido
 
@@ -26,21 +28,21 @@ let packsList = []
 // Array con contenido
 packsList.push(
     {
-        id: 1,
+        id: 401,
         imgPack: '/assets/packs/dryBones-donkeyKong-luig-marioi.png',
         characterName_1: 'Dry Bones',
         characterName_2: 'Donkey Kong',
         characterName_3: 'Luigi',
-        characterName_4: 'Mario',
+        characterName_4: 'Mario Bros',
         kart_1: 'Standard Kart',
         kart_2: 'Sports Coupe',
         kart_3: 'Standard Kart',
         kart_4: 'Badwagon',
     },
     {
-        id: 2,
+        id: 402,
         imgPack: '/assets/packs/mario-bowser-luigi-blackYoshi.png',
-        characterName_1: 'Mario',
+        characterName_1: 'Mario Bros',
         characterName_2: 'Bowser',
         characterName_3: 'Luigi',
         characterName_4: 'Black Yoshi',
@@ -50,9 +52,9 @@ packsList.push(
         kart_4: 'P-Wing',
     },
     {
-        id: 3,
+        id: 403,
         imgPack: '/assets/packs/mario-donkeyKong-diddyKong-yellowYoshi.png',
-        characterName_1: 'Mario',
+        characterName_1: 'Mario Bros',
         characterName_2: 'Donkey Kong',
         characterName_3: 'Diddy Kong',
         characterName_4: 'Yellow Yoshi',
@@ -62,11 +64,11 @@ packsList.push(
         kart_4: 'Pipe Frame',
     },
     {
-        id: 4,
+        id: 404,
         imgPack: '/assets/packs/peach-rosalina-mario-luigi.png',
         characterName_1: 'Peach',
         characterName_2: 'Rosalina',
-        characterName_3: 'Mario',
+        characterName_3: 'Mario Bros',
         characterName_4: 'Luigi',
         kart_1: 'Standard Kart',
         kart_2: 'Standard Kart',
@@ -74,7 +76,7 @@ packsList.push(
         kart_4: 'P-Wing',
     },
     {
-        id: 5,
+        id: 405,
         imgPack: '/assets/packs/waluigi-toad-blueYoshi-diddyKong.png',
         characterName_1: 'Waluigi',
         characterName_2: 'Toad',
@@ -86,11 +88,11 @@ packsList.push(
         kart_4: 'Mach 8',
     },
     {
-        id: 6,
+        id: 406,
         imgPack: '/assets/packs/yoshi-peach-mario-yellowShyGuy.png',
         characterName_1: 'Yoshi',
         characterName_2: 'Peach',
-        characterName_3: 'Mario',
+        characterName_3: 'Mario Bros',
         characterName_4: 'Orange Shy Guy',
         kart_1: 'Mach 8',
         kart_2: 'P-Wing',
@@ -98,10 +100,10 @@ packsList.push(
         kart_4: 'Standard Kart',
     },
     {
-        id: 7,
+        id: 407,
         imgPack: '/assets/packs/wario-mario-waluigi-luigi.png',
         characterName_1: 'Wario',
-        characterName_2: 'Mario',
+        characterName_2: 'Mario Bros',
         characterName_3: 'Waluigi',
         characterName_4: 'Luigi',
         kart_1: 'Standard Kart',
@@ -110,7 +112,7 @@ packsList.push(
         kart_4: 'Pipe Frame',
     },
     {
-        id: 8,
+        id: 408,
         imgPack: '/assets/packs/dryBones-bowser-shyGuy-Koopa.png',
         characterName_1: 'Dry Bones',
         characterName_2: 'Bowser',
@@ -122,7 +124,7 @@ packsList.push(
         kart_4: 'Mach 8',
     },
     {
-        id: 9,
+        id: 409,
         imgPack: '/assets/packs/babyLuigi-babyPeach-babyBowser-BabyMario.png',
         characterName_1: 'Baby Luigi',
         characterName_2: 'Baby Peach',
@@ -134,6 +136,40 @@ packsList.push(
         kart_4: 'Standard Kart',
     },
 )
+
+
+// Funcion que revisa si hay algo en el LOCALSTORAGE 
+function alredyInCollectionList() {
+
+    const item = JSON.parse(localStorage.getItem('4pack'));
+    let packs;
+
+    if(item) {
+        packs = item;
+    } else {
+        packs = {};
+    }
+
+    return packs;
+}
+
+//Funcion que agrega o quita contenido al LocalStorage
+function packsInCollection(pack) {
+
+    let packsInCollectionList = alredyInCollectionList();
+    
+    if(packsInCollectionList[pack.id]) {
+
+        packsInCollectionList[pack.id] = undefined;
+
+    }else {
+        packsInCollectionList[pack.id] = pack;
+    }
+
+    localStorage.setItem('4pack', JSON.stringify(packsInCollectionList))
+}
+
+
 
 // Funcion que agrega el contenido a el navegador
 function addCards4Packs(array) {
@@ -153,35 +189,36 @@ function addCards4Packs(array) {
         //Detalles Nombre y Kart
         let details = document.createElement('div');
 
-        // Nombre y Vehiculo encabezado
-        let titleCharactersKarts = document.createElement('p');
-        let bLabelCharactersKarts = document.createElement('b')
-        let textBLabelCharactersKarts = document.createTextNode('Personajes y vehículos:');
-        bLabelCharactersKarts.append(textBLabelCharactersKarts);
-        titleCharactersKarts.append(bLabelCharactersKarts);
-
         //Personajes y Vehiculos
         //Personaje 1
         let character_1 = document.createElement('p');
-        let contentCharacter_1 = document.createTextNode(`- ${item.characterName_1} en ${item.kart_1},`);
-        character_1.append(contentCharacter_1);
+        let bLabelCharacter_1 = document.createElement('b');
+        let contentCharacter_1 = document.createTextNode(`${item.characterName_1} - ${item.kart_1}`);
+        bLabelCharacter_1.append(contentCharacter_1)
+        character_1.append(bLabelCharacter_1);
 
         //Personaje 2
         let character_2 = document.createElement('p');
-        let contentCharacter_2 = document.createTextNode(`- ${item.characterName_2} en ${item.kart_2},`);
-        character_2.append(contentCharacter_2);
+        let bLabelCharacter_2 = document.createElement('b');
+        let contentCharacter_2 = document.createTextNode(`${item.characterName_2} - ${item.kart_2}`);
+        bLabelCharacter_2.append(contentCharacter_2)
+        character_2.append(bLabelCharacter_2);
 
         //Personaje 3
         let character_3 = document.createElement('p');
-        let contentCharacter_3 = document.createTextNode(`- ${item.characterName_3} en ${item.kart_3},`);
-        character_3.append(contentCharacter_3);
+        let bLabelCharacter_3 = document.createElement('b');
+        let contentCharacter_3 = document.createTextNode(`${item.characterName_3} - ${item.kart_3}`);
+        bLabelCharacter_3.append(contentCharacter_3)
+        character_3.append(bLabelCharacter_3);
 
         //Personaje 4
         let character_4 = document.createElement('p');
-        let contentCharacter_4 = document.createTextNode(`- ${item.characterName_4} en ${item.kart_4}`);
-        character_4.append(contentCharacter_4);
+        let bLabelCharacter_4 = document.createElement('b');
+        let contentCharacter_4 = document.createTextNode(`${item.characterName_4} - ${item.kart_4}`);
+        bLabelCharacter_4.append(contentCharacter_4)
+        character_4.append(bLabelCharacter_4);
 
-        details.append(titleCharactersKarts, character_1, character_2, character_3, character_4);
+        details.append(character_1, character_2, character_3, character_4);
 
         //Button Add
 
@@ -192,37 +229,43 @@ function addCards4Packs(array) {
     
 
         // Agregando clases a elementos
-        card.classList.add('packs-kart');
         card.classList.add('general-card');
+        card.classList.add('packs-kart');
         card.classList.add('bordersNormal');
+        imgContainer.classList.add('container-img');
         imgContainer.classList.add('packs-kart__container-img');
+        details.classList.add('details')
         details.classList.add('packs-kart__details')
-        titleCharactersKarts.classList.add('characterAndKartsPacks')
-        character_1.classList.add('characterPacks');
-        character_2.classList.add('characterPacks');
-        character_3.classList.add('characterPacks');
-        character_4.classList.add('characterPacks');
+        character_1.classList.add('characterPack');
+        character_2.classList.add('characterPack');
+        character_3.classList.add('characterPack');
+        character_4.classList.add('characterPack');
+        buttonAdd.classList.add('addCollection');
+        buttonAdd.classList.add('noInCollection');
 
-        buttonAdd.classList.add('packs-kart__addCollection');
-        buttonAdd.classList.add('packs-kart__noInCollection');
+        // Revisa si ya está el pack en la coleccion, si si mantiene los estilos en verde
+        if (alredyInCollectionList()[item.id]) {
+            card.classList.add('bordersGreen');
+            buttonAdd.classList.add('inCollection')
+            textButton.textContent = 'En mi colección'
+            buttonAdd.style.color = 'white';
+        }
     
         //Funcionalidad del boton agregar a coleccion
         function collection() {
 
-            if(!buttonAdd.classList.contains('packs-kart__inCollection')) {
+            if(!buttonAdd.classList.contains('inCollection')) {
                 card.classList.remove('bordersNormal')
                 card.classList.add('bordersGreen')
 
-                buttonAdd.classList.remove('packs-kart__noInCollection')
-                buttonAdd.classList.add('packs-kart__inCollection')
+                buttonAdd.classList.remove('noInCollection')
+                buttonAdd.classList.add('inCollection')
 
-                buttonAdd.removeChild(textButton);
-
-                textButton = document.createTextNode('En mi colección')
+                textButton.textContent = 'En mi colección';
                 buttonAdd.style.color = 'white';
-                buttonAdd.append(textButton);
 
-                card.style.borderWidth = '3px';
+                packsInCollection(item);
+
             } else {
                 card.classList.remove('bordersGreen')
                 card.classList.add('bordersNormal')
@@ -230,13 +273,10 @@ function addCards4Packs(array) {
                 buttonAdd.classList.remove('packs-kart__inCollection')
                 buttonAdd.classList.add('packs-kart__noInCollection')
                 
-                buttonAdd.removeChild(textButton);
-                
-                textButton = document.createTextNode('Agregar a mi colección')
+                textButton.textContent = 'Agregar a mi colección';
                 buttonAdd.style.color = 'white';
-                buttonAdd.append(textButton);
                 
-                card.style.borderWidth = '1px';
+                packsInCollection(item);
             }
         } 
         buttonAdd.addEventListener('click', collection)

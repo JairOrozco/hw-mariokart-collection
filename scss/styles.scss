@@ -1,16 +1,18 @@
-$font_headers: 'Hind Siliguri', sans-serif;
-$font_main: 'Montserrat', sans-serif;
+// Fuentes
+$font_headers: 'Montserrat', sans-serif;
+$font_main: 'Poppins', sans-serif;
 
-$color-background-buttons: rgb(216, 216, 216);
-$color-borders: rgb(160, 160, 160);
-$color-background-card-added: rgb(255, 255, 255);
-$color-borders-card-added: rgb(5, 112, 5);
+//Colores
+$darkBlue: #0D3653;
+$mediumGray: #BBBBBB;
+$white: rgb(255, 255, 255);
+$greenborders: rgb(5, 112, 5);
+$ligthBlue: #D1DEE8;
 
 
 *{
     padding: 0;
     margin: 0;
-    border: none;
     box-sizing: border-box;
 }
 
@@ -20,15 +22,9 @@ $color-borders-card-added: rgb(5, 112, 5);
 
 /* Estilos Etiquetas globales  */
 
-h1 {
-    width: 80%;
-    margin: 0 auto 10px auto;
-    font-family: $font_headers;
-    font-size: 2.5rem;
-    text-align: center;
-    line-height: 2.8rem;
+body {
+    user-select: none;
 }
-
 
 
 /* Estilos Header  */
@@ -36,164 +32,97 @@ header {
     width: 100%;
     height: 90px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-}
-
-.nav {
-    width: 100%;
-    height: 60px;
-    display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    .menu-button {
-        width: 35px;
-        height: 35px;
-        position: absolute;
-    };
-}
-
-// Clases para cerrar abrir el menu en mobile
-.inactive {
-    display: none;
+    background: $darkBlue;
 }
 
 
-.hamburguerMenu {
-    background: url(/assets/icons/menu.png);
-    background-size: 100% 100%;
-}
-
-.xMenu {
-    background: url(/assets/icons/close.png);
-    background-size: 100% 100%;
-}
-
-// -----------
-
-.containerlistMenu {
-    width: 70%;
-    max-width: 310px;
-    margin: 10px auto 30px auto;
-    background: white;
-    .listMenu {
-        width: 100%;
-        font-family: $font_main;
-        font-size: 1.4rem;
-        list-style: none;
-        .itemListMenu {
-            margin: 10px 0;
-            a {
-                text-decoration: none;
-                color: black;
-            }
-        }
-    }
-}
-
-
-
-/* Estilos Main  */
-
-main {
-    width: 100%;
-    position: relative;
-    user-select: none;
-}
-
-// Tarjetas vinculos
-
-.container-linkCards {
+.content {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill ,minmax(270px, 300px) );
-    grid-template-rows: repeat(8, minmax(380px, auto));
+    grid-template-columns: repeat(auto-fill, 300px);
+    grid-template-rows: repeat(auto-fill, minmax((325px, 330px)));
     place-content: center;
-    gap: 30px;
-    margin-bottom: 30px;
-    .section-card {
-        position: relative;
+    gap: 30px 0;
+    padding: 40px 0;
+    &__section {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        border: 1px solid $color-borders;
-        border-radius: 15px;
-        overflow: hidden;
-        h2 {
-            position: absolute;
-            top: 30px;
-            width: 80%;
-            margin: 0 auto 10px auto;
+        .section__title {
+            width: 100%;
             font-family: $font_headers;
-            font-size: 2.5rem;
+            font-size: 2rem;
+            color: $darkBlue;
             text-align: center;
-            line-height: 2.8rem;
         }
-        &__imgContainer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 15px;
-            user-select: none;
+        .section__imgContainer {
+            width: 200px;
+            height: 200px;
+            margin: 10px 0;
+            border-radius: 10px;
+            background: $mediumGray;
         }
-        &__button {
-            position: absolute;
-            bottom: 30px;
-            width: 60%;
-            height: 35px;
-            border-radius: 5px;
-            background-color: $color-background-buttons;
-            cursor: pointer;
-            a {
+        .section__description {
+            width: 80%;
+            font-family: $font_main;
+            font-size: 1.2rem;
+            color: black;
+            text-align: center;
+        }
+        a {
+            width: 40%;
+            text-decoration: none;
+            .section__button {
+                width: 100%;
+                height: 30px;
+                margin-top: 10px;
                 font-family: $font_main;
-                font-size: 1.4rem;
+                font-size: 1.2rem;
                 color: black;
-                text-decoration: none;
+                border: 1px solid black;
+                border-radius: 7px;
+                outline: none;
+                background: transparent;
             }
         }
-        &__button:hover {
-            transform: scale(1.05);
-        }
-        &__button:active {
-            transform: scale(1);
-        }
+        
     }
 }
 
-// Imagenes a medida correcta de tarjetas vinculos
-.blisterIndividual img, .blisterGlider img, .eggs img, .specials img {
-    width: 230px;
-    height: 230px;
-}
-
-.packs img {
-    width:280px;
-    height: 180px;
-}
-
-.packsGlider img, .tracks img {
-    width: 300px;
-    height: 190px;
-}
-
-.mixPack img {
-    width: 285px;
-    height: 190px;
-}
 
 
-
+// Footer
 footer {
     width: 100%;
-    height: auto;
-    font-family: $font_main;
-    font-size: 1.8rem;
-    border: 1px solid red;;
-}
-
-footer div {
-    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: $darkBlue;
+    .copyright {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        p {
+            width: 100%;
+            padding: 5px 0;
+            font-family: $font_main;
+            font-size: 1rem;
+            color: $white;
+        }
+    }
+    .socialMedia {
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+        a {
+            text-decoration: none;
+            figure {
+                width: 40px;
+            }
+        }
+    }
 }

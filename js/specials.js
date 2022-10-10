@@ -4,17 +4,19 @@
 // Abrir y cerrar el menu
 const menuButton = document.querySelector('#menuButton');
 const menu = document.querySelector('#menu');
+const moreCategories = document.querySelector('#moreCategories')
 
 function openCloseMenu(){
 
     menuButton.classList.toggle('hamburguerMenu')
-    menuButton.classList.toggle('xMenu')
+    menuButton.classList.toggle('closeImgMenu')
 
     menu.classList.toggle('inactive');
 };
 
 menuButton.addEventListener('click', openCloseMenu);
 
+moreCategories.style.fontWeight = '400';
 
 // Section Specials agregar contenido
 
@@ -26,25 +28,59 @@ let specialsList = [];
 // Array con contenido
 specialsList.push(
     {
+        id: 1201,
         imgKart: '/assets/specials/golden-mario.png',
-        characterName: 'Mario',
+        characterName: 'Golden Mario',
         kart: 'Standard Kart',
         glider: 'Super Glider'
     },
     {
+        id: 1202,
         imgKart: '/assets/specials/silver-mario.png',
-        characterName: 'Mario',
+        characterName: 'Silver Mario',
         kart: 'Standard Kart',
         glider: 'Super Glider'
     },
     {
+        id: 1203,
         imgKart: '/assets/specials/pink-gold-peach.png',
-        characterName: 'Peach',
+        characterName: 'Pink Gold Peach',
         kart: 'Standard Kart',
-        glider: ' --- '
+        glider: ''
     },
     
 )
+
+// Funcion que revisa si hay algo en el LOCALSTORAGE 
+function alredyInCollectionList() {
+
+    const item = JSON.parse(localStorage.getItem('specials'));
+    let karts;
+
+    if(item) {
+        karts = item;
+    } else {
+        karts = {};
+    }
+
+    return karts;
+}
+
+//Funcion que agrega o quita contenido al LocalStorage
+function kartInCollection(kart) {
+
+    let kartsInCollectionList = alredyInCollectionList();
+    
+    if(kartsInCollectionList[kart.id]) {
+
+        kartsInCollectionList[kart.id] = undefined;
+
+    }else {
+        kartsInCollectionList[kart.id] = kart;
+    }
+
+    localStorage.setItem('specials', JSON.stringify(kartsInCollectionList))
+}
 
 // Funcion que aggrega el contenido al navegador
 function addCardsSpecials(array){
@@ -64,33 +100,13 @@ function addCardsSpecials(array){
         let details = document.createElement('div');
 
         // Nombre
-        let titleCharacter = document.createElement('p');
-        let bLabelCharacter = document.createElement('b')
-        let textBLabelCharacter = document.createTextNode('Personaje: ');
-        bLabelCharacter.append(textBLabelCharacter);
-        titleCharacter.append(bLabelCharacter)
-        let characterName = document.createTextNode(item.characterName);
-        titleCharacter.append(characterName);
+        let character = document.createElement('p');
+        let bLabel = document.createElement('b')
+        let characterName = document.createTextNode(`${item.characterName} - ${item.kart} - ${item.glider}`);
+        bLabel.append(characterName);
+        character.append(bLabel)
 
-        //Kart
-        let titleKart = document.createElement('p');
-        let bLabelKart = document.createElement('b')
-        let textBLabelKart = document.createTextNode('Kart: ');
-        bLabelKart.append(textBLabelKart);
-        titleKart.append(bLabelKart);
-        let kartName = document.createTextNode(item.kart);
-        titleKart.append(kartName);
-
-        //Paravela
-        let titleGlider = document.createElement('p');
-        let bLabelGlider = document.createElement('b')
-        let textBLabelGlider = document.createTextNode('Planeador: ')
-        bLabelGlider.append(textBLabelGlider);
-        titleGlider.append(bLabelGlider);
-        let gliderName = document.createTextNode(item.glider);
-        titleGlider.append(gliderName);
-
-        details.append(titleCharacter, titleKart, titleGlider);
+        details.append(character);
 
         //Button Add
 
@@ -101,52 +117,53 @@ function addCardsSpecials(array){
     
 
         // Agregando clases a elementos
-        card.classList.add('specials-kart');
         card.classList.add('general-card');
+        card.classList.add('specials-kart');
         card.classList.add('bordersNormal');
-        imgContainer.classList.add('specials-kart__container-img');
+        imgContainer.classList.add('container-img');
+        details.classList.add('details')
         details.classList.add('specials-kart__details')
-        titleCharacter.classList.add('characterSpecial')
-        titleKart.classList.add('kartSpecial');
-        titleGlider.classList.add('GliderSpecial');
-    
-        buttonAdd.classList.add('specials-kart__addCollection');
-        buttonAdd.classList.add('specials-kart__noInCollection')
+        character.classList.add('characterSpecial')
+        buttonAdd.classList.add('addCollection');
+        buttonAdd.classList.add('noInCollection')
     
         // Agregando nodos a su respectivo padre
         card.append(imgContainer, details, buttonAdd);
 
+        // Revisa si ya está el kart en la coleccion, si si mantiene los estilos en verde
+        if (alredyInCollectionList()[item.id]) {
+            card.classList.add('bordersGreen');
+            buttonAdd.classList.add('inCollection')
+            textButton.textContent = 'En mi colección'
+            buttonAdd.style.color = 'white';
+        }
+
         //Funcionalidad del boton agregar a coleccion
         function collection() {
 
-            if(!buttonAdd.classList.contains('specials-kart__inCollection')) {
+            if(!buttonAdd.classList.contains('inCollection')) {
                 card.classList.remove('bordersNormal')
                 card.classList.add('bordersGreen')
 
-                buttonAdd.classList.remove('specials-kart__noInCollection')
-                buttonAdd.classList.add('specials-kart__inCollection')
+                buttonAdd.classList.remove('noInCollection')
+                buttonAdd.classList.add('inCollection')
 
-                buttonAdd.removeChild(textButton);
-
-                textButton = document.createTextNode('En mi colección')
+                textButton.textContent = 'En mi colección';
                 buttonAdd.style.color = 'white';
-                buttonAdd.append(textButton);
 
-                card.style.borderWidth = '3px';
+                kartInCollection(item);
+
             } else {
                 card.classList.remove('bordersGreen')
                 card.classList.add('bordersNormal')
 
-                buttonAdd.classList.remove('specials-kart__inCollection')
-                buttonAdd.classList.add('specials-kart__noInCollection')
+                buttonAdd.classList.remove('inCollection')
+                buttonAdd.classList.add('noInCollection')
                 
-                buttonAdd.removeChild(textButton);
-                
-                textButton = document.createTextNode('Agregar a mi colección')
+                textButton.textContent = 'Agregar a mi colección';
                 buttonAdd.style.color = 'white';
-                buttonAdd.append(textButton);
-                
-                card.style.borderWidth = '1px';
+
+                kartInCollection(item);
             }
         } 
         buttonAdd.addEventListener('click', collection)
