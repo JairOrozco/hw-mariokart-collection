@@ -290,7 +290,7 @@ kartsListBlister.push(
         characterName: 'Lakitu',
         kart: 'Sports Coupe'
     }
-)
+);
 
 // Funcion que revisa si hay algo en el LOCALSTORAGE 
 function alredyInCollectionList() {

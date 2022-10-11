@@ -94,3 +94,184 @@ header {
         }
     }
 }
+
+.serie__container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill ,minmax(315px, 320px) );
+    grid-template-rows: repeat(3, minmax(435px, 440px));
+    place-content: center;
+    gap: 30px;
+    padding: 40px 0;
+    .serieCard {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border: 2px solid $black;
+        border-radius: 15px;
+        overflow: hidden;
+        h2 {
+            width: 100%;
+            position: absolute;
+            top: calc(7%);
+            padding: 0 auto 10px auto;
+            font-family: $font_headers;
+            font-size: 2.2rem;
+            font-weight: 400;
+            text-align: center;
+            line-height: 2.8rem;
+        }
+        &__imgContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 15px;
+        }
+        &__button {
+            width: 40%;
+            position: absolute;
+            bottom: 27px;
+            height: 35px;
+            border: 1px solid $black;
+            border-radius: 7px;
+            background-color: transparent;
+            a {
+                font-family: $font_main;
+                font-size: 1.4rem;
+                color: black;
+                text-decoration: none;
+            }
+        }
+        &__button:active {
+            transform: scale(1.05);
+        }
+    }
+}
+
+// Estilos de la sub-categoria genericos //
+.general-section {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill ,minmax(315px, 320px) );
+    grid-template-rows: auto-fill;
+    place-content: center;
+    gap: 30px;
+    padding: 40px 0 40px 0;
+}
+
+.general-card{
+    width: 300px;
+    height: 395px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.container-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        width:280px;
+        height: 280px;
+    }
+}
+.details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0 10px 0;
+    font-family: $font_main;
+    font-size: 1.6rem;
+    &__characterSerie {
+        width: 100%;
+        text-align: center;
+    }
+}
+.addCollection {
+    width: 180px;
+    height: 30px;
+    font-family: $font_main;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    color: $white;
+}
+
+.noInCollection {
+    background-color: $black;
+}
+
+.inCollection {
+    background-color: $greenborders;
+}
+
+.addCollection:active {
+    transform: scale(1.05);
+}
+
+.bordersNormal {
+    border: 2px solid $black;
+}
+
+.bordersGreen {
+    border: 3px solid $greenborders;
+}
+
+/* 1.- Estilos de la sub-categoria BLISTERS INDIVIDUALES */
+
+/*
+.serie1-section {
+    width: 100%;
+    .serie1-kart {
+        width: 300px;
+        height: 395px;
+        .characterSerie1{
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+*/
+
+
+// Footer
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: $darkBlue;
+    .copyright {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        p {
+            width: 100%;
+            padding: 5px 0;
+            font-family: $font_main;
+            font-size: 1rem;
+            color: $white;
+        }
+    }
+    .socialMedia {
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+        a {
+            text-decoration: none;
+            figure {
+                width: 40px;
+            }
+        }
+    }
+}
