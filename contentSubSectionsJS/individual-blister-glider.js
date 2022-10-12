@@ -1,25 +1,13 @@
+// Funciones importadas
+import { kartInCollection } from '../utils/localStorage.js'; //Funcion que agrega o quita contenido al LocalStorage
+import { alredyInCollectionList } from '../utils/localStorage.js'; // Funcion que revisa si hay algo en el LOCALSTORAGE 
+import { observer } from '../utils/observer.js'  // Observador
+
 // Funcionalidades Generales de la página
-
-// Abrir y cerrar el menu
-const menuButton = document.querySelector('#menuButton');
-const menu = document.querySelector('#menu');
-const moreCategories = document.querySelector('#moreCategories')
-
-function openCloseMenu(){
-
-    menuButton.classList.toggle('hamburguerMenu')
-    menuButton.classList.toggle('closeImgMenu')
-
-    menu.classList.toggle('inactive');
-};
-
-menuButton.addEventListener('click', openCloseMenu);
-
-moreCategories.style.fontWeight = '400';
 
 // Section Blister Paravela agregando contenido
 
-// Variables
+// Nodos
 const individualBlisterGliderSection = document.querySelector('#individualBlisterGliderSection');
 let kartsListBlisterGlider = [];
 
@@ -140,37 +128,9 @@ kartsListBlisterGlider.push(
     },
 )
 
+// Lazy loader instancia
+let lazyLoader = new IntersectionObserver(observer);
 
-// Funcion que revisa si hay algo en el LOCALSTORAGE 
-function alredyInCollectionList() {
-
-    const item = JSON.parse(localStorage.getItem('individualGlider'));
-    let karts;
-
-    if(item) {
-        karts = item;
-    } else {
-        karts = {};
-    }
-
-    return karts;
-}
-
-//Funcion que agrega o quita contenido al LocalStorage
-function kartInCollection(kart) {
-
-    let kartsInCollectionList = alredyInCollectionList();
-    
-    if(kartsInCollectionList[kart.id]) {
-
-        kartsInCollectionList[kart.id] = undefined;
-
-    }else {
-        kartsInCollectionList[kart.id] = kart;
-    }
-
-    localStorage.setItem('individualGlider', JSON.stringify(kartsInCollectionList))
-}
 
 // Funcion para agregar contenido al navegador
 function addCardsGlider(array) {
@@ -184,8 +144,11 @@ function addCardsGlider(array) {
         // Figure e imagen
         let imgContainer = document.createElement('figure')
         let img = document.createElement('img');
-        img.setAttribute('src', item.imgKart);
+        img.setAttribute('data-img', item.imgKart);
         imgContainer.append(img);
+
+        //Lazy loader
+        lazyLoader.observe(img);
 
         //Detalles Nombre y Kart
         let details = document.createElement('div');

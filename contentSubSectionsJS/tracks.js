@@ -1,63 +1,24 @@
+// Funciones importadas
+import { kartInCollection } from '../utils/localStorage.js'; //Funcion que agrega o quita contenido al LocalStorage
+import { alredyInCollectionList } from '../utils/localStorage.js'; // Funcion que revisa si hay algo en el LOCALSTORAGE 
+import { observer } from '../utils/observer.js'  // Observador
+
 // Funcionalidades Generales de la página
-
-// Abrir y cerrar el menu
-const menuButton = document.querySelector('#menuButton');
-const menu = document.querySelector('#menu');
-
-function openCloseMenu(){
-
-    menuButton.classList.toggle('hamburguerMenu')
-    menuButton.classList.toggle('closeImgMenu')
-
-    menu.classList.toggle('inactive');
-};
-
-menuButton.addEventListener('click', openCloseMenu);
-
 
 // Section Pistas agregando contenido
 
-//Variables
+//Nodos
 let tracksSection = document.querySelector('#tracksSection')
-let tracksSection_4karts = document.querySelector('#tracksSection_4karts')
-let tracksSection_2karts = document.querySelector('#tracksSection_2karts')
 
 let tracksList_1 = [];
 let tracksList_2 = [];
 let tracksList_3 = [];
 
+// Lazy loader instancia
+let lazyLoader = new IntersectionObserver(observer);
 
-// Funcion que revisa si hay algo en el LOCALSTORAGE 
-function alredyInCollectionList() {
 
-    const item = JSON.parse(localStorage.getItem('track'));
-    let tracks;
-
-    if(item) {
-        tracks = item;
-    } else {
-        tracks = {};
-    }
-
-    return tracks;
-}
-
-//Funcion que agrega o quita contenido al LocalStorage
-function trackInCollection(track) {
-
-    let tracksInCollectionList = alredyInCollectionList();
-    
-    if(tracksInCollectionList[track.id]) {
-
-        tracksInCollectionList[track.id] = undefined;
-
-    }else {
-        tracksInCollectionList[track.id] = track;
-    }
-
-    localStorage.setItem('track', JSON.stringify(tracksInCollectionList))
-}
-
+// Section Tracks 4 karts
 // Array con contenido
 tracksList_1.push(
     {
@@ -86,8 +47,11 @@ function addCardsTracks(array){
         // Figure e imagen
         let imgContainer = document.createElement('figure')
         let img = document.createElement('img');
-        img.setAttribute('src', item.imgTrack);
+        img.setAttribute('data-img', item.imgTrack);
         imgContainer.append(img);
+
+        //Lazy loader
+        lazyLoader.observe(img);
 
         //Detalles Nombre y Kart
         let details = document.createElement('div');
@@ -186,7 +150,7 @@ function addCardsTracks(array){
                 textButton.textContent = 'En mi colección';
                 buttonAdd.style.color = 'white';
 
-                trackInCollection(item);
+                kartInCollection(item);
 
             } else {
                 card.classList.remove('bordersGreen')
@@ -198,7 +162,7 @@ function addCardsTracks(array){
                 textButton.textContent = 'Agregar a mi colección';
                 buttonAdd.style.color = 'white';
 
-                trackInCollection(item);
+                kartInCollection(item);
             }
         } 
         buttonAdd.addEventListener('click', collection)
@@ -207,11 +171,10 @@ function addCardsTracks(array){
         tracksSection.append(card);
     })
 }
-
 addCardsTracks(tracksList_1);
 
 
-// Section Tracks 2
+// Section Tracks 2 karts
 // Array con contenido
 tracksList_2.push(
     {
@@ -245,8 +208,11 @@ function addCardsTracks_2(array){
         // Figure e imagen
         let imgContainer = document.createElement('figure')
         let img = document.createElement('img');
-        img.setAttribute('src', item.imgTrack);
+        img.setAttribute('data-img', item.imgTrack);
         imgContainer.append(img);
+
+        //Lazy loader
+        lazyLoader.observe(img);
 
         //Detalles Nombre y Kart
         let details = document.createElement('div');
@@ -328,7 +294,7 @@ function addCardsTracks_2(array){
                 textButton.textContent = 'En mi colección';
                 buttonAdd.style.color = 'white';
 
-                trackInCollection(item);
+                kartInCollection(item);
 
             } else {
                 card.classList.remove('bordersGreen')
@@ -340,7 +306,7 @@ function addCardsTracks_2(array){
                 textButton.textContent = 'Agregar a mi colección';
                 buttonAdd.style.color = 'white';
 
-                trackInCollection(item);
+                kartInCollection(item);
 
             }
         } 
@@ -350,11 +316,10 @@ function addCardsTracks_2(array){
         tracksSection.append(card);
     })
 }
-
 addCardsTracks_2(tracksList_2);
 
 
-// Section Tracks 3
+// Section Tracks 1 kart
 // Array con contenido
 tracksList_3.push(
     {
@@ -419,8 +384,11 @@ function addCardsTracks_3(array){
         // Figure e imagen
         let imgContainer = document.createElement('figure')
         let img = document.createElement('img');
-        img.setAttribute('src', item.imgTrack);
+        img.setAttribute('data-img', item.imgTrack);
         imgContainer.append(img);
+
+        //Lazy loader
+        lazyLoader.observe(img);
 
         //Detalles Nombre y Kart
         let details = document.createElement('div');
@@ -497,7 +465,7 @@ function addCardsTracks_3(array){
                 textButton.textContent = 'En mi colección';
                 buttonAdd.style.color = 'white';
 
-                trackInCollection(item);
+                kartInCollection(item);
 
             } else {
                 card.classList.remove('bordersGreen')
@@ -509,7 +477,7 @@ function addCardsTracks_3(array){
                 textButton.textContent = 'Agregar a mi colección';
                 buttonAdd.style.color = 'white';
 
-                trackInCollection(item);
+                kartInCollection(item);
 
             }
         } 
@@ -519,5 +487,4 @@ function addCardsTracks_3(array){
         tracksSection.append(card);
     })
 }
-
 addCardsTracks_3(tracksList_3);

@@ -1,32 +1,18 @@
+// Funciones importadas
+import { kartInCollection } from '../utils/localStorage.js'; //Funcion que agrega o quita contenido al LocalStorage
+import { alredyInCollectionList } from '../utils/localStorage.js'; // Funcion que revisa si hay algo en el LOCALSTORAGE 
+import { observer } from '../utils/observer.js'  // Observador
+
 // Funcionalidades Generales de la página
 
-// Abrir y cerrar el menu
-const menuButton = document.querySelector('#menuButton');
-const menu = document.querySelector('#menu');
-const moreCategories = document.querySelector('#moreCategories')
+// Section Paquete Mix Glider agregar contenido
 
-function openCloseMenu(){
-
-    menuButton.classList.toggle('hamburguerMenu')
-    menuButton.classList.toggle('closeImgMenu')
-
-    menu.classList.toggle('inactive');
-};
-
-menuButton.addEventListener('click', openCloseMenu);
-
-moreCategories.style.fontWeight = '400';
-
-
-
-// Section Paquete Mix Glider
+// Nodos
 let mixPackSection = document.querySelector('#mixPackSection')
 let mixPacklist = [];
 
 
-// Section Paquete Mix Glider agregar contenido
-
-//Variables
+// Array con contenido
 mixPacklist.push(
     {
         id: 801,
@@ -53,36 +39,8 @@ mixPacklist.push(
     }
 );
 
-// Funcion que revisa si hay algo en el LOCALSTORAGE 
-function alredyInCollectionList() {
-
-    const item = JSON.parse(localStorage.getItem('packMix'));
-    let packs;
-
-    if(item) {
-        packs = item;
-    } else {
-        packs = {};
-    }
-
-    return packs;
-}
-
-//Funcion que agrega o quita contenido al LocalStorage
-function packsInCollection(pack) {
-
-    let packsInCollectionList = alredyInCollectionList();
-    
-    if(packsInCollectionList[pack.id]) {
-
-        packsInCollectionList[pack.id] = undefined;
-
-    }else {
-        packsInCollectionList[pack.id] = pack;
-    }
-
-    localStorage.setItem('packMix', JSON.stringify(packsInCollectionList))
-}
+// Lazy loader instancia
+let lazyLoader = new IntersectionObserver(observer);
 
 //Funcion que agrega contenido a el navegador
 function addCardsMixPack(array){
@@ -95,7 +53,11 @@ function addCardsMixPack(array){
         // Figure e imagen
         let imgContainer = document.createElement('figure')
         let img = document.createElement('img');
-        img.setAttribute('src', item.imgMixPack);
+        img.setAttribute('data-img', item.imgMixPack);
+        imgContainer.append(img);
+
+        //Lazy loader
+        lazyLoader.observe(img);
 
         //Detalles Nombre y Kart
         let details = document.createElement('div');
@@ -189,7 +151,6 @@ function addCardsMixPack(array){
     
         // Agregando nodos a su respectivo padre
         details.append(character_1, character_2, character_3, character_4, character_5, character_6, character_7, character_8);
-        imgContainer.append(img);
         card.append(imgContainer, details, buttonAdd);
 
         // Revisa si ya está el pack en la coleccion, si si mantiene los estilos en verde
@@ -213,7 +174,7 @@ function addCardsMixPack(array){
                 textButton.textContent = 'En mi colección';
                 buttonAdd.style.color = 'white';
 
-                packsInCollection(item);
+                kartInCollection(item);
 
             } else {
                 card.classList.remove('bordersGreen')
@@ -225,7 +186,7 @@ function addCardsMixPack(array){
                 textButton.textContent = 'Agregar a mi colección';
                 buttonAdd.style.color = 'white';
 
-                packsInCollection(item);
+                kartInCollection(item);
 
             }
         } 

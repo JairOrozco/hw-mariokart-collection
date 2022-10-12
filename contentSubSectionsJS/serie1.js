@@ -1,90 +1,61 @@
+// Funciones importadas
+import { kartInCollection } from '../utils/localStorage.js'; //Funcion que agrega o quita contenido al LocalStorage
+import { alredyInCollectionList } from '../utils/localStorage.js'; // Funcion que revisa si hay algo en el LOCALSTORAGE 
+import { observer } from '../utils/observer.js'  // Observador
 
 // Funcionalidades Generales de la página
 
-// Abrir y cerrar el menu
-const menuButton = document.querySelector('#menuButton');
-const menu = document.querySelector('#menu');
-const moreCategories = document.querySelector('#moreCategories')
-
-function openCloseMenu(){
-
-    menuButton.classList.toggle('hamburguerMenu')
-    menuButton.classList.toggle('closeImgMenu')
-
-    menu.classList.toggle('inactive');
-};
-
-menuButton.addEventListener('click', openCloseMenu);
-
-moreCategories.style.fontWeight = '400';
-
-// Section Specials agregar contenido
-
-//Variables
-let specialsSection = document.querySelector('#specialsSection')
-let specialsList = [];
+// Section Serie 1 agregando contenido
+const serie1Section = document.querySelector('#serie1Section');
+let kartsSerie1List = [];
 
 
-// Array con contenido
-specialsList.push(
+// Array con todo el contenido
+kartsSerie1List.push(
     {
-        id: 1201,
-        imgKart: '/assets/specials/golden-mario.png',
-        characterName: 'Golden Mario',
-        kart: 'Standard Kart',
-        glider: 'Super Glider'
+        id: 1601,
+        imgKart: '/assets/series/serie1/imagen.jpg',
+        characterName: 'Banana'
     },
     {
-        id: 1202,
-        imgKart: '/assets/specials/silver-mario.png',
-        characterName: 'Silver Mario',
-        kart: 'Standard Kart',
-        glider: 'Super Glider'
+        id: 1602,
+        imgKart: '/assets/series/serie1/imagen.jpg',
+        characterName: 'Bullet Bill'
     },
     {
-        id: 1203,
-        imgKart: '/assets/specials/pink-gold-peach.png',
-        characterName: 'Pink Gold Peach',
-        kart: 'Standard Kart',
-        glider: ''
+        id: 1603,
+        imgKart: '/assets/series/serie1/imagen.jpg',
+        characterName: 'Goomba'
     },
-    
-)
-
-// Funcion que revisa si hay algo en el LOCALSTORAGE 
-function alredyInCollectionList() {
-
-    const item = JSON.parse(localStorage.getItem('specials'));
-    let karts;
-
-    if(item) {
-        karts = item;
-    } else {
-        karts = {};
+    {
+        id: 1604,
+        imgKart: '/assets/series/serie1/imagen.jpg',
+        characterName: 'Green Shell'
+    },
+    {
+        id: 1605,
+        imgKart: '/assets/series/serie1/imagen.jpg',
+        characterName: 'Bob-Omb'
+    },
+    {
+        id: 1606,
+        imgKart: '/assets/series/serie1/imagen.jpg',
+        characterName: 'Monthy Mole'
+    },
+    {
+        id: 1607,
+        imgKart: '/assets/series/serie1/imagen.jpg',
+        characterName: 'Shell Trophy'
     }
+);
 
-    return karts;
-}
+// Lazy loader instancia
+let lazyLoader = new IntersectionObserver(observer);
 
-//Funcion que agrega o quita contenido al LocalStorage
-function kartInCollection(kart) {
-
-    let kartsInCollectionList = alredyInCollectionList();
-    
-    if(kartsInCollectionList[kart.id]) {
-
-        kartsInCollectionList[kart.id] = undefined;
-
-    }else {
-        kartsInCollectionList[kart.id] = kart;
-    }
-
-    localStorage.setItem('specials', JSON.stringify(kartsInCollectionList))
-}
-
-// Funcion que aggrega el contenido al navegador
-function addCardsSpecials(array){
+//Funcion que agrega el contenido a el navegador y funcionalidades de boton
+function addCards(array) {
     array.forEach(item => {
+
         // Creando elementos
 
         // Card
@@ -93,37 +64,38 @@ function addCardsSpecials(array){
         // Figure e imagen
         let imgContainer = document.createElement('figure')
         let img = document.createElement('img');
-        img.setAttribute('src', item.imgKart);
+        img.setAttribute('data-img', item.imgKart);
         imgContainer.append(img);
+
+        //Observador lazy load
+        lazyLoader.observe(img);
 
         //Detalles Nombre y Kart
         let details = document.createElement('div');
 
-        // Nombre
+        // Nombre y Kart
         let character = document.createElement('p');
-        let bLabel = document.createElement('b')
-        let characterName = document.createTextNode(`${item.characterName} - ${item.kart} - ${item.glider}`);
-        bLabel.append(characterName);
-        character.append(bLabel)
+        let bLabelCharacter = document.createElement('b')
+        let characterName = document.createTextNode(`${item.characterName}`);
+        bLabelCharacter.append(characterName);
+        character.append(bLabelCharacter);
 
         details.append(character);
 
         //Button Add
-
         let buttonAdd = document.createElement('button');
         let textButton = document.createTextNode('Agregar a mi colección')
         buttonAdd.setAttribute('type', 'button');
+        buttonAdd.setAttribute('id', 'addCollectionButton');
         buttonAdd.append(textButton);
-    
+
 
         // Agregando clases a elementos
         card.classList.add('general-card');
-        card.classList.add('specials-kart');
         card.classList.add('bordersNormal');
         imgContainer.classList.add('container-img');
         details.classList.add('details')
-        details.classList.add('specials-kart__details')
-        character.classList.add('characterSpecial')
+        character.classList.add('details__characterSerie')
         buttonAdd.classList.add('addCollection');
         buttonAdd.classList.add('noInCollection')
     
@@ -142,6 +114,7 @@ function addCardsSpecials(array){
         function collection() {
 
             if(!buttonAdd.classList.contains('inCollection')) {
+            
                 card.classList.remove('bordersNormal')
                 card.classList.add('bordersGreen')
 
@@ -159,7 +132,7 @@ function addCardsSpecials(array){
 
                 buttonAdd.classList.remove('inCollection')
                 buttonAdd.classList.add('noInCollection')
-                
+
                 textButton.textContent = 'Agregar a mi colección';
                 buttonAdd.style.color = 'white';
 
@@ -167,9 +140,14 @@ function addCardsSpecials(array){
             }
         } 
         buttonAdd.addEventListener('click', collection)
+
     
         // Agregando a section en HTML
-        specialsSection.append(card);
-    })
+        serie1Section.append(card);
+
+        //----------------------
+        
+        
+    });
 }
-addCardsSpecials(specialsList);
+addCards(kartsSerie1List);

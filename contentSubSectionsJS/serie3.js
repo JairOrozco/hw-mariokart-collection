@@ -1,96 +1,60 @@
+// Funciones importadas
+import { kartInCollection } from '../utils/localStorage.js'; //Funcion que agrega o quita contenido al LocalStorage
+import { alredyInCollectionList } from '../utils/localStorage.js'; // Funcion que revisa si hay algo en el LOCALSTORAGE 
+import { observer } from '../utils/observer.js'  // Observador
 
 // Funcionalidades Generales de la página
 
-// Abrir y cerrar el menu
-const menuButton = document.querySelector('#menuButton');
-const menu = document.querySelector('#menu');
-const moreCategories = document.querySelector('#moreCategories')
-
-function openCloseMenu(){
-
-    menuButton.classList.toggle('hamburguerMenu')
-    menuButton.classList.toggle('closeImgMenu')
-
-    menu.classList.toggle('inactive');
-};
-
-menuButton.addEventListener('click', openCloseMenu);
-
-moreCategories.style.fontWeight = '400';
-
-// Section Serie 1 agregando contenido
-const serie1Section = document.querySelector('#serie1Section');
-let kartsSerie1List = [];
+// Section Serie 3 agregando contenido
+const serie3Section = document.querySelector('#serie3Section');
+let kartsSerie3List = [];
 
 // Array con todo el contenido
-kartsSerie1List.push(
+kartsSerie3List.push(
     {
-        id: 1601,
+        id: 1615,
         imgKart: '/assets/series/serie1/imagen.jpg',
         characterName: 'Banana'
     },
     {
-        id: 1602,
+        id: 1616,
         imgKart: '/assets/series/serie1/imagen.jpg',
-        characterName: 'Bullet Bill'
+        characterName: 'Blue Spiny Shell'
     },
     {
-        id: 1603,
+        id: 1617,
+        imgKart: '/assets/series/serie1/imagen.jpg',
+        characterName: 'Cheep-Cheep'
+    },
+    {
+        id: 1618,
+        imgKart: '/assets/series/serie1/imagen.jpg',
+        characterName: 'Red Shell'
+    },
+    {
+        id: 1619,
+        imgKart: '/assets/series/serie1/imagen.jpg',
+        characterName: 'Boo'
+    },
+    {
+        id: 1620,
+        imgKart: '/assets/series/serie1/imagen.jpg',
+        characterName: 'Mechackoopa'
+    },
+    {
+        id: 1621,
         imgKart: '/assets/series/serie1/imagen.jpg',
         characterName: 'Goomba'
     },
     {
-        id: 1604,
+        id: 1622,
         imgKart: '/assets/series/serie1/imagen.jpg',
-        characterName: 'Green Shell'
-    },
-    {
-        id: 1605,
-        imgKart: '/assets/series/serie1/imagen.jpg',
-        characterName: 'Bob-Omb'
-    },
-    {
-        id: 1606,
-        imgKart: '/assets/series/serie1/imagen.jpg',
-        characterName: 'Monthy Mole'
-    },
-    {
-        id: 1607,
-        imgKart: '/assets/series/serie1/imagen.jpg',
-        characterName: 'Shell Trophy'
+        characterName: 'Star Cup Trophy'
     }
 );
 
-// Funcion que revisa si hay algo en el LOCALSTORAGE 
-function alredyInCollectionList() {
-
-    const item = JSON.parse(localStorage.getItem('serie1'));
-    let karts;
-
-    if(item) {
-        karts = item;
-    } else {
-        karts = {};
-    }
-
-    return karts;
-}
-
-//Funcion que agrega o quita contenido al LocalStorage
-function kartInCollection(kart) {
-
-    let kartsInCollectionList = alredyInCollectionList();
-    
-    if(kartsInCollectionList[kart.id]) {
-
-        kartsInCollectionList[kart.id] = undefined;
-
-    }else {
-        kartsInCollectionList[kart.id] = kart;
-    }
-
-    localStorage.setItem('serie1', JSON.stringify(kartsInCollectionList))
-}
+// Lazy loader instancia
+let lazyLoader = new IntersectionObserver(observer);
 
 //Funcion que agrega el contenido a el navegador y funcionalidades de boton
 function addCards(array) {
@@ -104,8 +68,11 @@ function addCards(array) {
         // Figure e imagen
         let imgContainer = document.createElement('figure')
         let img = document.createElement('img');
-        img.setAttribute('src', item.imgKart);
+        img.setAttribute('data-img', item.imgKart);
         imgContainer.append(img);
+
+        //Observador lazy load
+        lazyLoader.observe(img);
 
         //Detalles Nombre y Kart
         let details = document.createElement('div');
@@ -180,11 +147,11 @@ function addCards(array) {
 
     
         // Agregando a section en HTML
-        serie1Section.append(card);
+        serie3Section.append(card);
 
         //----------------------
         
         
     });
 }
-addCards(kartsSerie1List);
+addCards(kartsSerie3List);

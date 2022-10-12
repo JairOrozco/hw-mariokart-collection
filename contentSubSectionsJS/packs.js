@@ -1,26 +1,13 @@
+// Funciones importadas
+import { kartInCollection } from '../utils/localStorage.js'; //Funcion que agrega o quita contenido al LocalStorage
+import { alredyInCollectionList } from '../utils/localStorage.js'; // Funcion que revisa si hay algo en el LOCALSTORAGE 
+import { observer } from '../utils/observer.js'  // Observador
 
 // Funcionalidades Generales de la página
 
-// Abrir y cerrar el menu
-const menuButton = document.querySelector('#menuButton');
-const menu = document.querySelector('#menu');
-const moreCategories = document.querySelector('#moreCategories')
-
-function openCloseMenu(){
-
-    menuButton.classList.toggle('hamburguerMenu')
-    menuButton.classList.toggle('closeImgMenu')
-
-    menu.classList.toggle('inactive');
-};
-
-menuButton.addEventListener('click', openCloseMenu);
-
-moreCategories.style.fontWeight = '400' 
-
 // Section Paquetes agregar contenido
 
-//Variables
+//Nodos
 let packsSection = document.querySelector('#packsSection');
 let packsList = []
 
@@ -137,39 +124,8 @@ packsList.push(
     },
 )
 
-
-// Funcion que revisa si hay algo en el LOCALSTORAGE 
-function alredyInCollectionList() {
-
-    const item = JSON.parse(localStorage.getItem('4pack'));
-    let packs;
-
-    if(item) {
-        packs = item;
-    } else {
-        packs = {};
-    }
-
-    return packs;
-}
-
-//Funcion que agrega o quita contenido al LocalStorage
-function packsInCollection(pack) {
-
-    let packsInCollectionList = alredyInCollectionList();
-    
-    if(packsInCollectionList[pack.id]) {
-
-        packsInCollectionList[pack.id] = undefined;
-
-    }else {
-        packsInCollectionList[pack.id] = pack;
-    }
-
-    localStorage.setItem('4pack', JSON.stringify(packsInCollectionList))
-}
-
-
+// Lazy loader instancia
+let lazyLoader = new IntersectionObserver(observer);
 
 // Funcion que agrega el contenido a el navegador
 function addCards4Packs(array) {
@@ -183,8 +139,11 @@ function addCards4Packs(array) {
         // Figure e imagen
         let imgContainer = document.createElement('figure')
         let img = document.createElement('img');
-        img.setAttribute('src', item.imgPack);
+        img.setAttribute('data-img', item.imgPack);
         imgContainer.append(img);
+
+        //Lazy loader
+        lazyLoader.observe(img);
 
         //Detalles Nombre y Kart
         let details = document.createElement('div');
@@ -264,19 +223,19 @@ function addCards4Packs(array) {
                 textButton.textContent = 'En mi colección';
                 buttonAdd.style.color = 'white';
 
-                packsInCollection(item);
+                kartInCollection(item);
 
             } else {
                 card.classList.remove('bordersGreen')
                 card.classList.add('bordersNormal')
 
-                buttonAdd.classList.remove('packs-kart__inCollection')
-                buttonAdd.classList.add('packs-kart__noInCollection')
+                buttonAdd.classList.remove('inCollection')
+                buttonAdd.classList.add('noInCollection')
                 
                 textButton.textContent = 'Agregar a mi colección';
                 buttonAdd.style.color = 'white';
                 
-                packsInCollection(item);
+                kartInCollection(item);
             }
         } 
         buttonAdd.addEventListener('click', collection)

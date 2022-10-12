@@ -1,3 +1,6 @@
+// Funciones importadas
+import { openCloseMenu } from './utils/mobile-menu.js'; // Funcion para abrir y cerrar el menu mobile
+
 
 // Nodos del menu
 const menuButton = document.querySelector('#menuButton');
@@ -6,15 +9,7 @@ const moreCategories = document.querySelector('#moreCategories');
 
 
 // Abrir y cerrar el menu
-
-function openCloseMenu(){
-
-    menuButton.classList.toggle('hamburguerMenu')
-    menuButton.classList.toggle('closeImgMenu')
-
-    menu.classList.toggle('inactive');
-};
-
 menuButton.addEventListener('click', openCloseMenu);
 
+// Quitar negritas a extra renglon en el menu mobile
 moreCategories.style.fontWeight = '400';

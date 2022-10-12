@@ -1,26 +1,13 @@
+// Funciones importadas
+import { kartInCollection } from '../utils/localStorage.js'; //Funcion que agrega o quita contenido al LocalStorage
+import { alredyInCollectionList } from '../utils/localStorage.js'; // Funcion que revisa si hay algo en el LOCALSTORAGE 
+import { observer } from '../utils/observer.js'  // Observador
+
 // Funcionalidades Generales de la página
-
-// Abrir y cerrar el menu
-const menuButton = document.querySelector('#menuButton');
-const menu = document.querySelector('#menu');
-const moreCategories = document.querySelector('#moreCategories')
-
-function openCloseMenu(){
-
-    menuButton.classList.toggle('hamburguerMenu')
-    menuButton.classList.toggle('closeImgMenu')
-
-    menu.classList.toggle('inactive');
-};
-
-menuButton.addEventListener('click', openCloseMenu);
-
-moreCategories.style.fontWeight = '400';
-
 
 // Section Paquetes Glider agregar contenido
 
-// Variables
+// Nodos
 let gliderPacksSection = document.querySelector('#glidersPacksSection');
 let gliderPacksList = []
 
@@ -54,38 +41,8 @@ gliderPacksList.push(
     }
 );
 
-
-// Funcion que revisa si hay algo en el LOCALSTORAGE 
-function alredyInCollectionList() {
-
-    const item = JSON.parse(localStorage.getItem('packGlider'));
-    let packs;
-
-    if(item) {
-        packs = item;
-    } else {
-        packs = {};
-    }
-
-    return packs;
-}
-
-
-//Funcion que agrega o quita contenido al LocalStorage
-function packsInCollection(pack) {
-
-    let packsInCollectionList = alredyInCollectionList();
-    
-    if(packsInCollectionList[pack.id]) {
-
-        packsInCollectionList[pack.id] = undefined;
-
-    }else {
-        packsInCollectionList[pack.id] = pack;
-    }
-
-    localStorage.setItem('packGlider', JSON.stringify(packsInCollectionList))
-}
+// Lazy loader instancia
+let lazyLoader = new IntersectionObserver(observer);
 
 
 // Funcion que agrega el contenido a el navegador 
@@ -99,7 +56,11 @@ function addCardsGliderPacks(array) {
         // Figure e imagen
         let imgContainer = document.createElement('figure')
         let img = document.createElement('img');
-        img.setAttribute('src', item.imgGliderPacks);
+        img.setAttribute('data-img', item.imgGliderPacks);
+        imgContainer.append(img);
+
+        //Lazy loader
+        lazyLoader.observe(img);
 
         //Detalles Nombre y Kart
         let details = document.createElement('div');
@@ -153,7 +114,6 @@ function addCardsGliderPacks(array) {
     
         // Agregando nodos a su respectivo padre
         details.append(characterKartGlider_1, characterKartGlider_2, characterKartGlider_3);
-        imgContainer.append(img);
         card.append(imgContainer, details, buttonAdd);
 
         // Revisa si ya está el pack en la coleccion, si si mantiene los estilos en verde
@@ -177,7 +137,7 @@ function addCardsGliderPacks(array) {
                 textButton.textContent = 'En mi colección';
                 buttonAdd.style.color = 'white';
 
-                packsInCollection(item);
+                kartInCollection(item);
 
             } else {
                 card.classList.remove('bordersGreen')
@@ -189,7 +149,7 @@ function addCardsGliderPacks(array) {
                 textButton.textContent = 'Agregar a mi colección';
                 buttonAdd.style.color = 'white';
 
-                packsInCollection(item);
+                kartInCollection(item);
             }
         } 
         buttonAdd.addEventListener('click', collection)
