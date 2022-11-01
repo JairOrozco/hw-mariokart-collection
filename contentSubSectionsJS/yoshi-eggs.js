@@ -68,6 +68,7 @@ let lazyLoader = new IntersectionObserver(observer);
 
 // Funcion que agrega contenido a el navegador
 function addCardsYoshiEggs(array) {
+    let completeContent = [];
     array.forEach(item => {
         // Creando elementos
 
@@ -156,8 +157,10 @@ function addCardsYoshiEggs(array) {
         } 
         buttonAdd.addEventListener('click', collection)
     
-        // Agregando a section en HTML
-        yoshiEggsSection.append(card);
+        //Insertando contenido completo a array
+        completeContent.push(card);
     })
+    // Agregando a section en HTML
+    yoshiEggsSection.append(...completeContent);
 }
 addCardsYoshiEggs(yoshiEggsList);

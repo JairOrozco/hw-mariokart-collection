@@ -47,6 +47,7 @@ let lazyLoader = new IntersectionObserver(observer);
 
 // Funcion que agrega el contenido a el navegador 
 function addCardsGliderPacks(array) {
+    let completeContent = [];
     array.forEach(item => {
         // Creando elementos
 
@@ -154,8 +155,10 @@ function addCardsGliderPacks(array) {
         } 
         buttonAdd.addEventListener('click', collection)
     
-        // Agregando a section en HTML
-        gliderPacksSection.append(card);
+        //Insertando contenido completo a array
+        completeContent.push(card)
     })
+    // Agregando a section en HTML
+    gliderPacksSection.append(...completeContent);
 }
 addCardsGliderPacks(gliderPacksList);

@@ -14,37 +14,37 @@ let kartsSerie1List = [];
 kartsSerie1List.push(
     {
         id: 1601,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie1/banana.png',
         characterName: 'Banana'
     },
     {
         id: 1602,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie1/bill-bullet.png',
         characterName: 'Bullet Bill'
     },
     {
         id: 1603,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie1/goomba.png',
         characterName: 'Goomba'
     },
     {
         id: 1604,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie1/green-shell.png',
         characterName: 'Green Shell'
     },
     {
         id: 1605,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie1/bob-omb.png',
         characterName: 'Bob-Omb'
     },
     {
         id: 1606,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie1/monthy-mole.png',
         characterName: 'Monthy Mole'
     },
     {
         id: 1607,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie1/shell-trophy.png',
         characterName: 'Shell Trophy'
     }
 );
@@ -54,6 +54,7 @@ let lazyLoader = new IntersectionObserver(observer);
 
 //Funcion que agrega el contenido a el navegador y funcionalidades de boton
 function addCards(array) {
+    let completeContent = [];
     array.forEach(item => {
 
         // Creando elementos
@@ -140,14 +141,11 @@ function addCards(array) {
             }
         } 
         buttonAdd.addEventListener('click', collection)
-
-    
-        // Agregando a section en HTML
-        serie1Section.append(card);
-
-        //----------------------
         
-        
+        //Insertando contenido completo a array
+        completeContent.push(card);
     });
+    // Agregando a section en HTML
+    serie1Section.append(...completeContent);
 }
 addCards(kartsSerie1List);

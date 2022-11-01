@@ -13,37 +13,37 @@ let kartsSerie2List = [];
 kartsSerie2List.push(
     {
         id: 1608,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie3/red-shell.png',
         characterName: 'Red Shell'
     },
     {
         id: 1609,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie1/bill-bullet.png',
         characterName: 'Bullet Bill'
     },
     {
         id: 1610,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie1/monthy-mole.png',
         characterName: 'Monthy Mole'
     },
     {
         id: 1611,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie3/boo.png',
         characterName: 'Boo'
     },
     {
         id: 1612,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie2/cow.png',
         characterName: 'Cow'
     },
     {
         id: 1613,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie1/bob-omb.png',
         characterName: 'Bob-Omb'
     },
     {
         id: 1614,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie2/mushroom-trophy.png',
         characterName: 'Mushroom Cup Trophy'
     }
 );
@@ -53,6 +53,7 @@ let lazyLoader = new IntersectionObserver(observer);
 
 //Funcion que agrega el contenido a el navegador y funcionalidades de boton
 function addCards(array) {
+    let completeContent = [];
     array.forEach(item => {
 
         // Creando elementos
@@ -140,13 +141,10 @@ function addCards(array) {
         } 
         buttonAdd.addEventListener('click', collection)
 
-    
-        // Agregando a section en HTML
-        serie2Section.append(card);
-
-        //----------------------
-        
-        
+        //Insertando contenido completo a array
+        completeContent.push(card);
     });
+    // Agregando a section en HTML
+    serie2Section.append(...completeContent);
 }
 addCards(kartsSerie2List);

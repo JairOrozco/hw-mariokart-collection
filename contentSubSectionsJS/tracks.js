@@ -38,6 +38,7 @@ tracksList_1.push(
 
 //Funcion que agrega contenido al navegador
 function addCardsTracks(array){
+    let completeContent = [];
     array.forEach(item => {
         // Creando elementos
 
@@ -167,9 +168,11 @@ function addCardsTracks(array){
         } 
         buttonAdd.addEventListener('click', collection)
     
-        // Agregando a section en HTML
-        tracksSection.append(card);
+        //Insertando contenido completo a array
+        completeContent.push(card);
     })
+    // Agregando a section en HTML
+    tracksSection.append(...completeContent);
 }
 addCardsTracks(tracksList_1);
 
@@ -199,6 +202,7 @@ tracksList_2.push(
 
 //Funcion que agrega contenido al navegador
 function addCardsTracks_2(array){
+    let completeContent = [];
     array.forEach(item => {
         // Creando elementos
 
@@ -312,9 +316,11 @@ function addCardsTracks_2(array){
         } 
         buttonAdd.addEventListener('click', collection)
     
-        // Agregando a section en HTML
-        tracksSection.append(card);
+        //Insertando contenido completo a array
+        completeContent.push(card);
     })
+    // Agregando a section en HTML
+    tracksSection.append(...completeContent);
 }
 addCardsTracks_2(tracksList_2);
 
@@ -375,6 +381,7 @@ tracksList_3.push(
 
 //Funcion que agrega contenido al navegador
 function addCardsTracks_3(array){
+    let completeContent = [];
     array.forEach(item => {
          // Creando elementos
 
@@ -483,8 +490,10 @@ function addCardsTracks_3(array){
         } 
         buttonAdd.addEventListener('click', collection)
     
-        // Agregando a section en HTML
-        tracksSection.append(card);
+        // Insertando contenido completo a array
+        completeContent.push(card);
     })
+    // Agregando a section en HTML
+    tracksSection.append(...completeContent);
 }
 addCardsTracks_3(tracksList_3);

@@ -61,9 +61,15 @@ header {
         .section__imgContainer {
             width: 200px;
             height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin: 10px 0;
             border-radius: 10px;
-            background: $mediumGray;
+            border: 1px solid black;
+            img {
+                width: 180px;
+            }
         }
         .section__description {
             width: 80%;

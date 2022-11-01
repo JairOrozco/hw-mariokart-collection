@@ -42,6 +42,7 @@ kartsListBlisterGlider.push(
         kart: 'B-Dasher',
         glider: 'Peach Parasol'
     },
+    /*
     {
         id: 205,
         imgKart: '/assets/glider/daisy-standard.png',
@@ -49,6 +50,7 @@ kartsListBlisterGlider.push(
         kart: 'Standard Kart',
         glider: 'Flower Glider'
     },
+    */
     {
         id: 206,
         imgKart: '/assets/glider/rosalina-pWing.png',
@@ -98,6 +100,7 @@ kartsListBlisterGlider.push(
         kart: 'Sports Coupe',
         glider: 'Bowser Kite'
     },
+    /*
     {
         id: 213,
         imgKart: '/assets/glider/shyGuy-bDasher.png',
@@ -105,6 +108,7 @@ kartsListBlisterGlider.push(
         kart: 'B-Dasher',
         glider: 'Plane Glider'
     },
+    */
     {
         id: 214,
         imgKart: '/assets/glider/wario-sportsCoupe.png',
@@ -134,6 +138,7 @@ let lazyLoader = new IntersectionObserver(observer);
 
 // Funcion para agregar contenido al navegador
 function addCardsGlider(array) {
+    let completeContent = [];
     array.forEach(item => {
 
         // Creando elementos
@@ -235,9 +240,12 @@ function addCardsGlider(array) {
         buttonAdd.addEventListener('click', collection)
 
     
-        // Agregando a section en HTML
-        individualBlisterGliderSection.append(card);
+        // Agregando contenido completo a array 
+        completeContent.push(card);
+        
     });
+    //Insertando contenido en el document
+    individualBlisterGliderSection.append(...completeContent);
 }
 addCardsGlider(kartsListBlisterGlider);
 

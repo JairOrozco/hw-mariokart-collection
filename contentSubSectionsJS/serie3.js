@@ -13,42 +13,42 @@ let kartsSerie3List = [];
 kartsSerie3List.push(
     {
         id: 1615,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie1/banana.png',
         characterName: 'Banana'
     },
     {
         id: 1616,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie3/blue-spiny-shell.png',
         characterName: 'Blue Spiny Shell'
     },
     {
         id: 1617,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie3/cheep-cheep.png',
         characterName: 'Cheep-Cheep'
     },
     {
         id: 1618,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie3/red-shell.png',
         characterName: 'Red Shell'
     },
     {
         id: 1619,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie3/boo.png',
         characterName: 'Boo'
     },
     {
         id: 1620,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie3/mechackoopa.png',
         characterName: 'Mechackoopa'
     },
     {
         id: 1621,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie1/goomba.png',
         characterName: 'Goomba'
     },
     {
         id: 1622,
-        imgKart: '/assets/series/serie1/imagen.jpg',
+        imgKart: '/assets/series/serie3/star-trophy.png',
         characterName: 'Star Cup Trophy'
     }
 );
@@ -58,6 +58,7 @@ let lazyLoader = new IntersectionObserver(observer);
 
 //Funcion que agrega el contenido a el navegador y funcionalidades de boton
 function addCards(array) {
+    let completeContent = [];
     array.forEach(item => {
 
         // Creando elementos
@@ -145,13 +146,10 @@ function addCards(array) {
         } 
         buttonAdd.addEventListener('click', collection)
 
-    
-        // Agregando a section en HTML
-        serie3Section.append(card);
-
-        //----------------------
-        
-        
+        //Insertando contenido completo a array
+        completeContent.push(card);
     });
+    // Agregando a section en HTML
+    serie3Section.append(...completeContent);
 }
 addCards(kartsSerie3List);

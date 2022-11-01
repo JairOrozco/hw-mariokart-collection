@@ -7,6 +7,7 @@ import { observer } from '../utils/observer.js'  // Observador
 const individualBlisterSection = document.querySelector('#individualBlisterSection');
 let kartsListBlister = [];
 
+
 // Array con todo el contenido
 kartsListBlister.push(
     {
@@ -281,6 +282,7 @@ let lazyLoader = new IntersectionObserver(observer);
 
 //Funcion que agrega el contenido a el navegador y funcionalidades de boton
 function addCards(array) {
+    let completeContent = [];
     array.forEach(item => {
 
         // Creando elementos
@@ -367,17 +369,17 @@ function addCards(array) {
                 kartInCollection(item);
             }
         } 
+        
         buttonAdd.addEventListener('click', collection)
 
-        
-
-        // Agregando a section en HTML
-        individualBlisterSection.append(card);
-
-        //----------------------
+        // Agregando contenido completo a un array
+        completeContent.push(card)
         
         
     });
+
+    // Agregando a section en HTML
+    individualBlisterSection.append(...completeContent);
 }
 addCards(kartsListBlister);
 

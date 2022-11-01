@@ -43,6 +43,7 @@ let lazyLoader = new IntersectionObserver(observer);
 
 // Funcion que aggrega el contenido al navegador
 function addCardsSpecials(array){
+    let completeContent = [];
     array.forEach(item => {
         // Creando elementos
 
@@ -130,8 +131,10 @@ function addCardsSpecials(array){
         } 
         buttonAdd.addEventListener('click', collection)
     
-        // Agregando a section en HTML
-        specialsSection.append(card);
+        //Insertando contenido completo a array
+        completeContent.push(card);
     })
+    // Agregando a section en HTML
+    specialsSection.append(...completeContent);
 }
 addCardsSpecials(specialsList);

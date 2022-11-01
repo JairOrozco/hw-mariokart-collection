@@ -41,9 +41,14 @@ header {
     .content__section .section__imgContainer {
       width: 200px;
       height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin: 10px 0;
       border-radius: 10px;
-      background: #BBBBBB; }
+      border: 1px solid black; }
+      .content__section .section__imgContainer img {
+        width: 180px; }
     .content__section .section__description {
       width: 80%;
       font-family: "Poppins", sans-serif;

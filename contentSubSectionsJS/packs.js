@@ -110,6 +110,7 @@ packsList.push(
         kart_3: 'B-Dasher',
         kart_4: 'Mach 8',
     },
+    /*
     {
         id: 409,
         imgPack: '/assets/packs/babyLuigi-babyPeach-babyBowser-BabyMario.png',
@@ -122,6 +123,7 @@ packsList.push(
         kart_3: 'Flame Flyer',
         kart_4: 'Standard Kart',
     },
+    */
 )
 
 // Lazy loader instancia
@@ -129,6 +131,7 @@ let lazyLoader = new IntersectionObserver(observer);
 
 // Funcion que agrega el contenido a el navegador
 function addCards4Packs(array) {
+    let completeContent = [];
     array.forEach(item => {
 
         // Creando elementos
@@ -244,8 +247,10 @@ function addCards4Packs(array) {
         // Agregando nodos a su respectivo padre
         card.append(imgContainer, details, buttonAdd);
     
-        // Agregando a section en HTML
-        packsSection.append(card);
+        //Insertando contenido completo a array
+        completeContent.push(card);
     });
+    // Agregando a section en HTML
+    packsSection.append(...completeContent);
 }
 addCards4Packs(packsList);

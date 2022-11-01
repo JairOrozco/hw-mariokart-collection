@@ -44,6 +44,7 @@ let lazyLoader = new IntersectionObserver(observer);
 
 //Funcion que agrega contenido a el navegador
 function addCardsMixPack(array){
+    let completeContent = [];
     array.forEach(item => {
         // Creando elementos
 
@@ -192,8 +193,11 @@ function addCardsMixPack(array){
         } 
         buttonAdd.addEventListener('click', collection)
 
-        // Agregando a section en HTML
-        mixPackSection.append(card);
+        //Agregando contenido completo a array
+        completeContent.push(card)
     });
+
+    // Agregando a section en HTML
+    mixPackSection.append(...completeContent);
 }
 addCardsMixPack(mixPacklist);
