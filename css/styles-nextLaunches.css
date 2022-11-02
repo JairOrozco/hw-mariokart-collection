@@ -74,6 +74,8 @@ header {
   padding: 40px 0; }
 
 .general-card {
+  width: 300px;
+  height: 300px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -87,8 +89,8 @@ header {
   justify-content: center;
   align-items: center; }
   .container-img img {
-    width: 250px;
-    height: 250px; }
+    width: 220px;
+    height: 220px; }
 
 .details {
   width: 100%;
@@ -102,49 +104,39 @@ header {
   border: 2px solid #000000; }
 
 /* 1.- Estilos de la sub-categoria BLISTERS INDIVIDUALES */
-.blister-kart {
-  width: 300px;
-  height: 335px; }
-  .blister-kart .characterIndividualBlister {
-    width: 100%;
-    text-align: center; }
+.blister-kart .characterIndividualBlister {
+  width: 100%;
+  text-align: center; }
 
 /* 2.- Estilos de la sub-categoria BLISTERS GLIDERS INDIVIDUALES */
-.blister-glider-kart {
-  width: 300px;
-  height: 335px; }
-  .blister-glider-kart .characterBlisterGlider {
-    width: 100%;
-    text-align: center; }
+.blister-glider-kart .characterBlisterGlider {
+  width: 100%;
+  text-align: center; }
 
 /* 3.- Estilos de la sub-categoria PACKS */
-.packs-kart {
+.packs-kart__container-img img {
   width: 300px;
-  height: 335px; }
-  .packs-kart__container-img img {
-    width: 300px;
-    height: 170px; }
-  .packs-kart__details {
-    padding: 15px 0 0 0; }
-    .packs-kart__details .characterPack {
-      width: 100%;
-      padding: 0 0 0 45px;
-      text-align: left; }
+  height: 170px; }
+
+.packs-kart__details {
+  padding: 15px 0 0 0; }
+  .packs-kart__details .characterPack {
+    width: 100%;
+    padding: 0 0 0 45px;
+    text-align: left; }
 
 /* 4.- Estilos de la sub-categoria GLIDER PACKS */
-.glidersPacks-kart {
+.glidersPacks-kart__container-img img {
   width: 300px;
-  height: 335px; }
-  .glidersPacks-kart__container-img img {
-    width: 300px;
-    height: 170px; }
-  .glidersPacks-kart__details {
-    padding: 15px 0 0 0;
-    font-size: 1.4rem; }
-    .glidersPacks-kart__details .characterPackGlider {
-      width: 100%;
-      padding: 0 0 0 13px;
-      text-align: left; }
+  height: 170px; }
+
+.glidersPacks-kart__details {
+  padding: 15px 0 0 0;
+  font-size: 1.4rem; }
+  .glidersPacks-kart__details .characterPackGlider {
+    width: 100%;
+    padding: 0 0 0 13px;
+    text-align: left; }
 
 /* 5.- Estilos de la sub-categoria MIX PACKS */
 .mixPack-kart {

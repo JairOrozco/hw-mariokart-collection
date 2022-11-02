@@ -67,8 +67,8 @@ header {
 .categories__container {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(315px, 320px));
-  grid-template-rows: repeat(8, minmax(435px, 440px));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
+  grid-template-rows: repeat(8, minmax(330px, 330px));
   place-content: center;
   gap: 30px;
   padding: 40px 0; }
@@ -114,34 +114,33 @@ header {
       transform: scale(1.05); }
 
 .blisterIndividual img, .blisterGlider img {
-  width: 280px;
-  height: 280px; }
+  width: 200px;
+  height: 200px; }
 
 .eggs img {
-  width: 250px;
-  height: 250px; }
-
-.specials img {
-  width: 260px;
-  height: 260px; }
-
-.packsGlider img {
-  width: 335px;
-  height: 215px; }
-
-.packs img, .mixPack img {
-  width: 300px;
+  width: 190px;
   height: 190px; }
 
+.specials img {
+  width: 200px;
+  height: 200px; }
+
+.packsGlider img {
+  width: 280px;
+  height: 190px; }
+
+.packs img, .mixPack img {
+  width: 260px;
+  height: 170px; }
+
 .tracks img {
-  width: 330px;
-  height: 210px; }
+  width: 280px;
+  height: 170px; }
 
 .general-section {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
-  grid-template-rows: auto-fill;
   place-content: center;
   gap: 30px;
   padding: 40px 0; }
@@ -160,8 +159,8 @@ header {
   justify-content: center;
   align-items: center; }
   .container-img img {
-    width: 280px;
-    height: 280px; }
+    width: 230px;
+    height: 230px; }
 
 .details {
   width: 100%;
@@ -201,7 +200,7 @@ header {
   width: 100%; }
   .blister-section .blister-kart {
     width: 300px;
-    height: 395px; }
+    height: 350px; }
     .blister-section .blister-kart .characterIndividualBlister {
       width: 100%;
       text-align: center; }
@@ -211,7 +210,7 @@ header {
   width: 100%; }
   .blister-glider-section .blister-glider-kart {
     width: 300px;
-    height: 420px; }
+    height: 370px; }
     .blister-glider-section .blister-glider-kart .characterBlisterGlider {
       width: 100%;
       text-align: center; }
@@ -221,7 +220,7 @@ header {
   width: 100%; }
   .packs-section .packs-kart {
     width: 300px;
-    height: 360px; }
+    height: 350px; }
     .packs-section .packs-kart__container-img img {
       width: 280px;
       height: 170px; }
@@ -254,7 +253,7 @@ header {
   width: 100%; }
   .mixPack-section .mixPack-kart {
     width: 300px;
-    height: 440px; }
+    height: 430px; }
     .mixPack-section .mixPack-kart__container-img img {
       width: 270px;
       height: 160px; }
@@ -270,10 +269,10 @@ header {
   width: 100%; }
   .yoshis-eggs-section .yoshis-eggs-kart {
     width: 300px;
-    height: 390px; }
+    height: 350px; }
     .yoshis-eggs-section .yoshis-eggs-kart__container-img img {
-      width: 260px;
-      height: 260px; }
+      width: 230px;
+      height: 230px; }
     .yoshis-eggs-section .yoshis-eggs-kart__details {
       padding: 0 0 20px 0; }
       .yoshis-eggs-section .yoshis-eggs-kart__details .characterYoshi {
@@ -285,14 +284,18 @@ header {
   width: 100%; }
   .specials-section .specials-kart {
     width: 300px;
-    height: 400px; }
-    .specials-section .specials-kart__container-img {
-      display: flex;
-      justify-content: center;
-      align-items: center; }
-      .specials-section .specials-kart__container-img img {
-        width: 280px;
-        height: 280px; }
+    height: 350px;
+    /*
+        &__container-img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width:280px;
+                height: 280px;
+            }
+        }
+        */ }
     .specials-section .specials-kart__details {
       padding: 0 0 20px 0;
       font-size: 1.2rem; }

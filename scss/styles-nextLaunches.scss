@@ -108,6 +108,8 @@ header {
 }
 
 .general-card{
+    width: 300px;
+    height: 300px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -122,8 +124,8 @@ header {
     justify-content: center;
     align-items: center;
     img {
-        width:250px;
-        height: 250px;
+        width: 220px;
+        height: 220px;
     }
 }
 .details {
@@ -140,8 +142,6 @@ header {
 
 /* 1.- Estilos de la sub-categoria BLISTERS INDIVIDUALES */
 .blister-kart {
-    width: 300px;
-    height: 335px;
     .characterIndividualBlister {
         width: 100%;
         text-align: center;
@@ -150,8 +150,6 @@ header {
 
 /* 2.- Estilos de la sub-categoria BLISTERS GLIDERS INDIVIDUALES */
 .blister-glider-kart {
-    width: 300px;
-    height: 335px;
     .characterBlisterGlider {
         width: 100%;
         text-align: center;
@@ -160,8 +158,6 @@ header {
 
 /* 3.- Estilos de la sub-categoria PACKS */
 .packs-kart {
-    width: 300px;
-    height: 335px;
     &__container-img {
         img {
             width:300px;
@@ -180,8 +176,6 @@ header {
 
 /* 4.- Estilos de la sub-categoria GLIDER PACKS */
 .glidersPacks-kart {
-    width: 300px;
-    height: 335px;
     &__container-img {
         img {
             width: 300px;
