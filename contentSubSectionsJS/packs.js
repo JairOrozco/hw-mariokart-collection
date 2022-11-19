@@ -110,7 +110,6 @@ packsList.push(
         kart_3: 'B-Dasher',
         kart_4: 'Mach 8',
     },
-    /*
     {
         id: 409,
         imgPack: '/assets/packs/babyLuigi-babyPeach-babyBowser-BabyMario.png',
@@ -123,7 +122,6 @@ packsList.push(
         kart_3: 'Flame Flyer',
         kart_4: 'Standard Kart',
     },
-    */
 )
 
 // Lazy loader instancia

@@ -64,18 +64,34 @@ header {
         text-decoration: none;
         color: #0D3653; }
 
+.menu-desktop {
+  width: 100%;
+  display: none;
+  justify-content: flex-end;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 10px 24px 10px;
+  background: #D1DEE8; }
+  .menu-desktop .itemListMenu {
+    margin: 0 10px;
+    padding: 7px 0; }
+    .menu-desktop .itemListMenu a {
+      text-decoration: none;
+      color: #0D3653; }
+
 .general-section {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
-  grid-template-rows: auto-fill;
+  grid-template-rows: repeat(auto-fill, minmax(330px, 330px));
   place-content: center;
   gap: 30px;
   padding: 40px 0; }
 
 .general-card {
   width: 300px;
-  height: 300px;
+  height: 330px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -177,3 +193,51 @@ footer {
       text-decoration: none; }
       footer .socialMedia a figure {
         width: 40px; }
+
+@media (min-width: 668px) {
+  body {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto auto 1fr auto; }
+  /* Estilos Header  */
+  header {
+    height: 150px; }
+  footer .copyright p {
+    font-size: 1.1rem; }
+  footer .socialMedia {
+    width: 20%; }
+    footer .socialMedia a figure {
+      width: 45px; } }
+
+@media (min-width: 1024px) {
+  /* Estilos Header  */
+  header {
+    height: 230px; }
+  .menu-desktop {
+    display: flex; }
+  .nav {
+    display: none; }
+  .categoryWave {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .categoryWave .waveCard {
+      width: 300px; }
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 70px; }
+    footer .copyright {
+      width: 40%; }
+      footer .copyright p {
+        font-size: 1.2rem; }
+    footer .socialMedia {
+      width: 10%;
+      display: flex;
+      justify-content: space-between; }
+      footer .socialMedia a {
+        text-decoration: none; }
+        footer .socialMedia a figure {
+          width: 50px; } }

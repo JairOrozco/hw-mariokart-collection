@@ -64,16 +64,33 @@ header {
         text-decoration: none;
         color: #0D3653; }
 
+.menu-desktop {
+  width: 100%;
+  display: none;
+  justify-content: flex-end;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 10px 24px 10px;
+  background: #D1DEE8; }
+  .menu-desktop .itemListMenu {
+    margin: 0 10px;
+    padding: 7px 0; }
+    .menu-desktop .itemListMenu a {
+      text-decoration: none;
+      color: #0D3653; }
+
 .categories__container {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
-  grid-template-rows: repeat(8, minmax(330px, 330px));
+  grid-template-rows: repeat(auto-fill, minmax(350px, 350px));
   place-content: center;
   gap: 30px;
   padding: 40px 0; }
   .categories__container .categorieCard {
     width: 100%;
+    height: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -178,7 +195,8 @@ header {
   border: none;
   border-radius: 5px;
   outline: none;
-  color: white; }
+  color: white;
+  cursor: pointer; }
 
 .noInCollection {
   background-color: #000000; }
@@ -408,3 +426,54 @@ footer {
       text-decoration: none; }
       footer .socialMedia a figure {
         width: 40px; }
+
+.visible {
+  display: auto; }
+
+.hidden {
+  display: none; }
+
+@media (min-width: 668px) {
+  /* Estilos Header  */
+  header {
+    height: 150px; }
+  footer .copyright p {
+    font-size: 1.1rem; }
+  footer .socialMedia {
+    width: 20%; }
+    footer .socialMedia a figure {
+      width: 45px; } }
+
+@media (min-width: 1024px) {
+  body {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto auto 1fr auto; }
+  /* Estilos Header  */
+  header {
+    height: 230px; }
+  .menu-desktop {
+    display: flex; }
+  .nav {
+    display: none; }
+  .glidersPacks-section, .mixPack-section, .specials-section {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 70px; }
+    footer .copyright {
+      width: 40%; }
+      footer .copyright p {
+        font-size: 1.2rem; }
+    footer .socialMedia {
+      width: 10%;
+      display: flex;
+      justify-content: space-between; }
+      footer .socialMedia a {
+        text-decoration: none; }
+        footer .socialMedia a figure {
+          width: 50px; } }

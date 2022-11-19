@@ -40,15 +40,15 @@ nextLaunchesListIndividualGlider.push(
 
 nextLaunchesListPacks.push(
     {
-        imgPack: '../assets/packs/babyLuigi-babyPeach-babyBowser-BabyMario.png',
-        characterName_1: 'Baby Luigi',
-        characterName_2: 'Baby Peach',
-        characterName_3: 'Bowser Jr.',
-        characterName_4: 'Baby Mario',
-        kart_1: 'Sneeker',
-        kart_2: 'Pipe Frame',
-        kart_3: 'Flame Flyer',
-        kart_4: 'Standard Kart',
+        imgPack: '',
+        characterName_1: '',
+        characterName_2: '',
+        characterName_3: '.',
+        characterName_4: '',
+        kart_1: '',
+        kart_2: '',
+        kart_3: '',
+        kart_4: '',
     }
 );
 
@@ -288,7 +288,7 @@ function addCards4Packs(array) {
     // Agregando a section en HTML
     sectionNextLaunches.append(...completeContent);
 }
-addCards4Packs(nextLaunchesListPacks);
+// addCards4Packs(nextLaunchesListPacks);
 
 // 4.- Glider Packs
 function addCardsGliderPacks(array) {

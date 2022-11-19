@@ -1,5 +1,5 @@
 
-packge.json
+package.json
 ### Linux ###
 *~
 
@@ -245,3 +245,6 @@ $RECYCLE.BIN/
 *.css.map
 *.sass.map
 *.scss.map
+
+# Pruebas
+pruebas/

@@ -96,18 +96,38 @@ header {
     }
 }
 
+.menu-desktop {
+    width: 100%;
+    display: none;
+    justify-content: flex-end;
+    font-family: $font_main;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 10px 24px 10px;
+    background: $ligthBlue;
+    .itemListMenu {
+        margin: 0 10px;
+        padding: 7px 0;
+        a {
+            text-decoration: none;
+            color: $darkBlue;
+        }
+    }
+}
+
 // Categorias de la coleccion
 
 .categories__container {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill ,minmax(300px, 300px) );
-    grid-template-rows: repeat(8, minmax(330px, 330px));
+    grid-template-rows: repeat(auto-fill, minmax(350px, 350px));
     place-content: center;
     gap: 30px;
     padding: 40px 0;
     .categorieCard {
         width: 100%;
+        height: 350px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -232,6 +252,7 @@ header {
     border-radius: 5px;
     outline: none;
     color: $white;
+    cursor: pointer;
 }
 
 .noInCollection {
@@ -542,4 +563,91 @@ footer {
             }
         }
     }
+}
+
+.visible {
+    display: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+@media (min-width: 668px) {
+
+    /* Estilos Header  */
+    header {
+        height: 150px;
+    }
+
+    // Footer
+    footer {
+        .copyright {
+            p {
+                font-size: 1.1rem;
+            }
+        }
+        .socialMedia {
+            width: 20%;
+            a {
+                figure {
+                    width: 45px;
+                }
+            }
+        }
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+    body {
+        display: grid;
+        min-height: 100vh;
+        grid-template-rows: auto auto 1fr auto;
+    }
+    /* Estilos Header  */
+    header {
+        height: 230px;
+    }
+    .menu-desktop {
+        display: flex;
+    }
+    .nav {
+        display: none;
+    }
+
+    .glidersPacks-section, .mixPack-section, .specials-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    // Footer
+    footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 70px;
+        .copyright {
+            width: 40%;
+            p {
+                font-size: 1.2rem;
+            }
+        }
+        .socialMedia {
+            width: 10%;
+            display: flex;
+            justify-content: space-between;
+            a {
+                text-decoration: none;
+                figure {
+                    width: 50px;
+                }
+            }
+        }
+    }
+
 }

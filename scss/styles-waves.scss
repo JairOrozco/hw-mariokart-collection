@@ -11,7 +11,7 @@ $greenborders: rgb(5, 112, 5);
 $ligthBlue: #D1DEE8;
 
 
-*{
+*{ 
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -96,17 +96,37 @@ header {
     }
 }
 
+.menu-desktop {
+    width: 100%;
+    display: none;
+    justify-content: flex-end;
+    font-family: $font_main;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 10px 24px 10px;
+    background: $ligthBlue;
+    .itemListMenu {
+        margin: 0 10px;
+        padding: 7px 0;
+        a {
+            text-decoration: none;
+            color: $darkBlue;
+        }
+    }
+}
+
 // Categories Waves
 .categoryWave {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill ,minmax(300px, 300px) );
-    grid-template-rows: repeat(2, minmax(330px, 330px));
+    grid-template-rows: repeat(auto-fill, minmax(330px, 330px));
     place-content: center;
     gap: 30px;
     padding: 40px 0;
     .waveCard {
         width: 100%;
+        height: 330px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -243,4 +263,86 @@ footer {
             }
         }
     }
+}
+
+@media (min-width: 668px) {
+
+    body {
+        display: grid;
+        min-height: 100vh;
+        grid-template-rows: auto auto 1fr auto;
+    }
+
+    /* Estilos Header  */
+    header {
+        height: 150px;
+    }
+
+    // Footer
+    footer {
+        .copyright {
+            p {
+                font-size: 1.1rem;
+            }
+        }
+        .socialMedia {
+            width: 20%;
+            a {
+                figure {
+                    width: 45px;
+                }
+            }
+        }
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+    /* Estilos Header  */
+    header {
+        height: 230px;
+    }
+    .menu-desktop {
+        display: flex;
+    }
+    .nav {
+        display: none;
+    }
+
+    .categoryWave {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .waveCard {
+            width: 300px;
+        }
+    }
+
+    // Footer
+    footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 70px;
+        .copyright {
+            width: 40%;
+            p {
+                font-size: 1.2rem;
+            }
+        }
+        .socialMedia {
+            width: 10%;
+            display: flex;
+            justify-content: space-between;
+            a {
+                text-decoration: none;
+                figure {
+                    width: 50px;
+                }
+            }
+        }
+    }
+
 }

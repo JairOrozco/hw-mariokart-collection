@@ -13,13 +13,13 @@ body {
 /* Estilos Header  */
 header {
   width: 100%;
-  height: 90px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #0D3653; }
 
-.content {
+main .content {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, 300px);
@@ -27,18 +27,18 @@ header {
   place-content: center;
   gap: 30px 0;
   padding: 40px 0; }
-  .content__section {
+  main .content__section {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center; }
-    .content__section .section__title {
+    main .content__section .section__title {
       width: 100%;
       font-family: "Montserrat", sans-serif;
       font-size: 2rem;
       color: #0D3653;
       text-align: center; }
-    .content__section .section__imgContainer {
+    main .content__section .section__imgContainer {
       width: 200px;
       height: 200px;
       display: flex;
@@ -47,18 +47,18 @@ header {
       margin: 10px 0;
       border-radius: 10px;
       border: 1px solid black; }
-      .content__section .section__imgContainer img {
+      main .content__section .section__imgContainer img {
         width: 180px; }
-    .content__section .section__description {
+    main .content__section .section__description {
       width: 80%;
       font-family: "Poppins", sans-serif;
       font-size: 1.2rem;
       color: black;
       text-align: center; }
-    .content__section a {
+    main .content__section a {
       width: 40%;
       text-decoration: none; }
-      .content__section a .section__button {
+      main .content__section a .section__button {
         width: 100%;
         height: 30px;
         margin-top: 10px;
@@ -95,3 +95,77 @@ footer {
       text-decoration: none; }
       footer .socialMedia a figure {
         width: 40px; }
+
+@media (min-width: 668px) {
+  /* Estilos Header  */
+  header {
+    height: 150px; }
+  main .content__section .section__description {
+    font-size: 1.2rem; }
+  footer .copyright p {
+    font-size: 1.1rem; }
+  footer .socialMedia {
+    width: 20%; }
+    footer .socialMedia a figure {
+      width: 45px; } }
+
+@media (min-width: 1024px) {
+  body {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto; }
+  /* Estilos Header  */
+  header {
+    height: 230px; }
+  main {
+    display: flex;
+    align-items: center; }
+    main .content {
+      /*
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 350px);
+            grid-template-rows: repeat(auto-fill, minmax((335px, 340px)));
+            place-content: center;
+            */
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0; }
+      main .content__section {
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 10px; }
+        main .content__section .section__title {
+          font-size: 2.4rem; }
+        main .content__section .section__imgContainer {
+          width: 210px;
+          height: 210px; }
+          main .content__section .section__imgContainer img {
+            width: 190px; }
+        main .content__section .section__description {
+          font-size: 1.4rem; }
+        main .content__section a .section__button {
+          cursor: pointer;
+          font-size: 1.4rem; }
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 70px; }
+    footer .copyright {
+      width: 40%; }
+      footer .copyright p {
+        font-size: 1.2rem; }
+    footer .socialMedia {
+      width: 10%;
+      display: flex;
+      justify-content: space-between; }
+      footer .socialMedia a {
+        text-decoration: none; }
+        footer .socialMedia a figure {
+          width: 50px; } }
