@@ -1,0 +1,310 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+/* Estilos Etiquetas globales  */
+body {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+h1 {
+  padding-top: 28px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 2.8rem;
+}
+
+/* Estilos Header  */
+header {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0D3653;
+}
+
+.nav {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav .menu-button {
+  width: 35px;
+  height: 35px;
+}
+
+.inactive {
+  display: none;
+}
+
+.hamburguerMenu {
+  background: url("../../../assets/icons/menu.png");
+  background-size: 100% 100%;
+}
+
+.closeImgMenu {
+  background: url("../../../assets/icons/close.png");
+  background-size: 100% 100%;
+}
+
+.menu {
+  width: 100%;
+  padding: 10px 24px 10px;
+  background: #D1DEE8;
+}
+.menu .listMenu {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  list-style: none;
+}
+.menu .listMenu .itemListMenu {
+  padding: 7px 0;
+}
+.menu .listMenu .itemListMenu a {
+  text-decoration: none;
+  color: #0D3653;
+}
+
+.menu-desktop {
+  width: 100%;
+  display: none;
+  justify-content: flex-end;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 10px 24px 10px;
+  background: #D1DEE8;
+}
+.menu-desktop .itemListMenu {
+  margin: 0 10px;
+  padding: 7px 0;
+}
+.menu-desktop .itemListMenu a {
+  text-decoration: none;
+  color: #0D3653;
+}
+
+.categoryWave {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
+  grid-template-rows: repeat(auto-fill, minmax(330px, 330px));
+  place-content: center;
+  gap: 30px;
+  padding: 40px 0;
+}
+.categoryWave .waveCard {
+  width: 100%;
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 2px solid #000000;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.categoryWave .waveCard h2 {
+  width: 100%;
+  position: absolute;
+  top: 7%;
+  padding: 0 auto 10px auto;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  text-align: center;
+  line-height: 2.8rem;
+}
+.categoryWave .waveCard__imgContainer {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 15px;
+}
+.categoryWave .waveCard__imgContainer img {
+  width: 100%;
+}
+.categoryWave .waveCard__button {
+  width: 40%;
+  position: absolute;
+  bottom: 27px;
+  height: 35px;
+  border: 1px solid #000000;
+  border-radius: 7px;
+  background-color: transparent;
+}
+.categoryWave .waveCard__button a {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.4rem;
+  color: black;
+  text-decoration: none;
+}
+.categoryWave .waveCard__button:active {
+  transform: scale(1.05);
+}
+
+.general-section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
+  place-content: center;
+  gap: 30px;
+  padding: 40px 0;
+}
+
+.general-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.container-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-img img {
+  width: 300px;
+  height: 300px;
+}
+
+.bordersNormal {
+  border: 2px solid #000000;
+}
+
+/* 1.- Estilos de las cards*/
+.waves {
+  width: 100%;
+}
+.waves .waves-karts {
+  width: 300px;
+  height: 380px;
+}
+.waves .waves-karts .wave-number {
+  padding-bottom: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 2.8rem;
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #0D3653;
+}
+footer .copyright {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+footer .copyright p {
+  width: 100%;
+  padding: 5px 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+}
+footer .socialMedia {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+footer .socialMedia a {
+  text-decoration: none;
+}
+footer .socialMedia a figure {
+  width: 40px;
+}
+
+@media (min-width: 668px) {
+  body {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto auto 1fr auto;
+  }
+  /* Estilos Header  */
+  header {
+    height: 150px;
+  }
+  footer .copyright p {
+    font-size: 1.1rem;
+  }
+  footer .socialMedia {
+    width: 20%;
+  }
+  footer .socialMedia a figure {
+    width: 45px;
+  }
+}
+@media (min-width: 1024px) {
+  /* Estilos Header  */
+  header {
+    height: 230px;
+  }
+  .menu-desktop {
+    display: flex;
+  }
+  .nav {
+    display: none;
+  }
+  .categoryWave {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .categoryWave .waveCard {
+    width: 300px;
+  }
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 70px;
+  }
+  footer .copyright {
+    width: 40%;
+  }
+  footer .copyright p {
+    font-size: 1.2rem;
+  }
+  footer .socialMedia {
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+  }
+  footer .socialMedia a {
+    text-decoration: none;
+  }
+  footer .socialMedia a figure {
+    width: 50px;
+  }
+}/*# sourceMappingURL=styles-waves.css.map */

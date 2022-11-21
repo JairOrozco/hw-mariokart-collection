@@ -1,5 +1,5 @@
 // Funciones importadas
-import { openCloseMenu } from './utils/mobile-menu.js'; // Funcion para abrir y cerrar el menu mobile
+import { openCloseMenu } from './src/utils/mobile-menu.js'; // Funcion para abrir y cerrar el menu mobile
 
 
 // Nodos del menu

@@ -1,0 +1,214 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+/* Estilos Etiquetas globales  */
+body {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+/* Estilos Header  */
+header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0D3653;
+}
+
+main .content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-template-rows: repeat(auto-fill, minmax(325px, 330px));
+  place-content: center;
+  gap: 30px 0;
+  padding: 40px 0;
+}
+main .content__section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main .content__section .section__title {
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  color: #0D3653;
+  text-align: center;
+}
+main .content__section .section__imgContainer {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+main .content__section .section__imgContainer img {
+  width: 180px;
+}
+main .content__section .section__description {
+  width: 80%;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  color: black;
+  text-align: center;
+}
+main .content__section a {
+  width: 40%;
+  text-decoration: none;
+}
+main .content__section a .section__button {
+  width: 100%;
+  height: 30px;
+  margin-top: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  color: black;
+  border: 1px solid black;
+  border-radius: 7px;
+  outline: none;
+  background: transparent;
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #0D3653;
+}
+footer .copyright {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+footer .copyright p {
+  width: 100%;
+  padding: 5px 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+}
+footer .socialMedia {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+footer .socialMedia a {
+  text-decoration: none;
+}
+footer .socialMedia a figure {
+  width: 40px;
+}
+
+@media (min-width: 668px) {
+  /* Estilos Header  */
+  header {
+    height: 150px;
+  }
+  main .content__section .section__description {
+    font-size: 1.2rem;
+  }
+  footer .copyright p {
+    font-size: 1.1rem;
+  }
+  footer .socialMedia {
+    width: 20%;
+  }
+  footer .socialMedia a figure {
+    width: 45px;
+  }
+}
+@media (min-width: 1024px) {
+  body {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+  }
+  /* Estilos Header  */
+  header {
+    height: 230px;
+  }
+  main {
+    display: flex;
+    align-items: center;
+  }
+  main .content {
+    /*
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 350px);
+    grid-template-rows: repeat(auto-fill, minmax((335px, 340px)));
+    place-content: center;
+    */
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+  }
+  main .content__section {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+  }
+  main .content__section .section__title {
+    font-size: 2.4rem;
+  }
+  main .content__section .section__imgContainer {
+    width: 210px;
+    height: 210px;
+  }
+  main .content__section .section__imgContainer img {
+    width: 190px;
+  }
+  main .content__section .section__description {
+    font-size: 1.4rem;
+  }
+  main .content__section a .section__button {
+    cursor: pointer;
+    font-size: 1.4rem;
+  }
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 70px;
+  }
+  footer .copyright {
+    width: 40%;
+  }
+  footer .copyright p {
+    font-size: 1.2rem;
+  }
+  footer .socialMedia {
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+  }
+  footer .socialMedia a {
+    text-decoration: none;
+  }
+  footer .socialMedia a figure {
+    width: 50px;
+  }
+}/*# sourceMappingURL=styles.css.map */
