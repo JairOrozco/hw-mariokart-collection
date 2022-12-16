@@ -60,7 +60,7 @@ kartsListBlisterGlider.push(
     },
     {
         id: 207,
-        imgKart: '../../../../assets/glider/mario-standard.png',
+        imgKart: '../../../../assets/logos-marioKart/img-noKart.png',
         characterName: 'Yoshi',
         kart: 'Sports Coupe',
         glider: 'Parafoil'

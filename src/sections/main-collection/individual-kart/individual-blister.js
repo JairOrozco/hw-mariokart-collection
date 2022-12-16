@@ -144,7 +144,7 @@ kartsListBlister.push(
     },
     {
         id: 23,
-        imgKart: '/assets/blister/yoshi-blue-standart.png',
+        imgKart: '../../../../assets/blister/yoshi-blue-standart.png',
         characterName: 'Blue Yoshi',
         kart: 'Standard Kart'
     },
