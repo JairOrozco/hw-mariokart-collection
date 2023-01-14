@@ -377,6 +377,13 @@ tracksList_3.push(
         characterName: 'Shy Guy',
         kart: 'Standard Kart',
     },
+    {
+        id: 1411,
+        imgTrack: '../../../../assets/tracks/circuit-slam.png',
+        trackName: 'Circuit Slam',
+        characterName: 'Mario Bros',
+        kart: 'Standard Kart',
+    },
 );
 
 //Funcion que agrega contenido al navegador
